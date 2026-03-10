@@ -1,33 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import BranchCard from '../components/BranchCard';
 import { getBranches } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const Branches = () => {
     const [branches, setBranches] = useState([]);
-    const [filteredBranches, setFilteredBranches] = useState([]);
-    const [filter, setFilter] = useState('All');
+    const [searchParams, setSearchParams] = useSearchParams();
     const [loading, setLoading] = useState(true);
+    const filter = searchParams.get('type')?.toLowerCase() || 'all';
 
-    const categories = ['All', 'Main Campus', 'Franchise'];
+    const slugify = (text) => (text || '').toLowerCase().trim().replace(/\s+/g, '-');
+
+    const [categories, setCategories] = useState(['All']);
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await getBranches();
             setBranches(data);
-            setFilteredBranches(data);
+
+            // Dynamic categories from data
+            const uniqueTypes = ['All', ...new Set(data.map(b => b.type).filter(Boolean))];
+            setCategories(uniqueTypes);
+
             setLoading(false);
         };
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (filter === 'All') {
-            setFilteredBranches(branches);
-        } else {
-            setFilteredBranches(branches.filter(b => b.type === filter));
-        }
+    const filteredBranches = useMemo(() => {
+        if (filter === 'all') return branches;
+        return branches.filter(b => slugify(b.type) === filter);
     }, [filter, branches]);
+
+    const handleFilterChange = (cat) => {
+        const newParams = new URLSearchParams(searchParams);
+        const slugifiedCat = slugify(cat);
+        if (slugifiedCat === 'all') {
+            newParams.delete('type');
+        } else {
+            newParams.set('type', slugifiedCat);
+        }
+        setSearchParams(newParams);
+    };
 
     // Animation Variants
     const fadeInUp = {
@@ -47,6 +64,17 @@ const Branches = () => {
 
     return (
         <div className="pb-20 bg-slate-50 min-h-screen">
+            <SEOHead
+                title="Our Branches | Abacus Centers in Haveri, Ranebennur & Savanur"
+                description="Find Aryabhata Abacus centers near you. We have branches in Haveri, Ranebennur, Savanur, Byadgi, Shirhatti and across Haveri district, Karnataka."
+                canonical="/branches"
+                jsonLd={[
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Branches', url: '/branches' },
+                    ]),
+                ]}
+            />
             {/* Full-screen Immersive Hero Section */}
             <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -108,16 +136,16 @@ const Branches = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 {/* Modern Filter Section */}
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                    <div className="max-w-xl">
-                        <h2 className="text-4xl font-black text-slate-900 mb-4">Explore Our Campus Network</h2>
-                        <p className="text-slate-500 text-lg">Select a category to filter our specialized learning centers and find your perfect fit.</p>
+                    <div className="max-w-xl text-left">
+                        <h2 className="text-4xl font-black text-slate-900 mb-4 border-l-8 rounded border-sky-500 pl-6">Campus Network</h2>
+                        <p className="text-slate-500 text-lg">Filter our specialized learning centers by campus category.</p>
                     </div>
-                    <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex flex-wrap gap-3">
+                    <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex flex-wrap justify-end gap-3">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
-                                onClick={() => setFilter(cat)}
-                                className={`px-8 py-3 rounded-2xl text-sm font-black transition-all border ${filter === cat
+                                onClick={() => handleFilterChange(cat)}
+                                className={`px-8 py-3 rounded-2xl text-sm font-black transition-all border ${slugify(cat) === filter
                                     ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-900/30'
                                     : 'bg-white text-slate-400 border-slate-100 hover:border-orange-200 hover:text-orange-600'
                                     }`}
@@ -136,6 +164,7 @@ const Branches = () => {
                     </div>
                 ) : (
                     <motion.div
+                        key={filter}
                         initial="hidden"
                         animate="visible"
                         variants={staggerContainer}
@@ -150,7 +179,7 @@ const Branches = () => {
                         ) : (
                             <div className="col-span-full text-center py-20 text-slate-400">
                                 <p className="text-xl font-medium">No branches found in this category.</p>
-                                <button onClick={() => setFilter('All')} className="mt-4 text-orange-500 font-black hover:underline">View All Branches</button>
+                                <button onClick={() => handleFilterChange('All')} className="mt-4 text-orange-500 font-black hover:underline">View All Branches</button>
                             </div>
                         )}
                     </motion.div>

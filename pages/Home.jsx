@@ -6,8 +6,11 @@ import ServiceCard from '../components/ServiceCard';
 import BlogCard from '../components/BlogCard';
 import BranchCard from '../components/BranchCard';
 import Carousel from '../components/Carousel';
-import SpecialClassCard from '../components/SpecialClassCard';
-import { getServices, getBlogs, getBranches, getVideos, getTestimonials, getSpecialClasses } from '../services/api';
+import { getServices, getBlogs, getBranches, getVideos, getTestimonials } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildLocalBusinessSchema } from '../components/schema/LocalBusinessSchema';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
+import { SITE_CONFIG } from '../seo.config';
 
 const slides = [
     {
@@ -34,32 +37,39 @@ const slides = [
 ];
 
 const Home = () => {
-    const [services, setServices] = useState([]);
+    const [allServices, setAllServices] = useState([]);
     const [blogs, setBlogs] = useState([]);
     const [branches, setBranches] = useState([]);
     const [videos, setVideos] = useState([]);
     const [testimonials, setTestimonials] = useState([]);
-    const [specialClasses, setSpecialClasses] = useState([]);
+    const [specialServices, setSpecialServices] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [loading, setLoading] = useState(true);
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
-            const [servicesData, blogsData, branchesData, videosData, testimonialsData, specialClassesData] = await Promise.all([
+            const [servicesData, blogsData, branchesData, videosData, testimonialsData] = await Promise.all([
                 getServices(),
                 getBlogs(),
                 getBranches(),
                 getVideos(),
-                getTestimonials(),
-                getSpecialClasses()
+                getTestimonials()
             ]);
-            setServices(servicesData.slice(0, 3)); // Show only 3 services
-            setBlogs(blogsData.slice(0, 3)); // Show only 3 blogs
-            setBranches(branchesData.slice(0, 3)); // Show only 3 branches
+
+            setAllServices(servicesData);
+
+            // Filter seasonal services for the special section
+            let seasonal = servicesData.filter(s => s.isSeasonal);
+            if (seasonal.length === 0) {
+                seasonal = servicesData; // Fallback to all if none marked seasonal
+            }
+            setSpecialServices(seasonal);
+
+            setBlogs(blogsData.slice(0, 3));
+            setBranches(branchesData.slice(0, 3));
             setVideos(videosData);
             setTestimonials(testimonialsData);
-            setSpecialClasses(specialClassesData);
             setLoading(false);
         };
         fetchData();
@@ -99,6 +109,17 @@ const Home = () => {
 
     return (
         <div className=" pb-20 min-h-screen text-center">
+            {/* ── SEO: Meta Tags & Structured Data ── */}
+            <SEOHead
+                title="Best Abacus Classes in Haveri | Vedic Maths & Abacus Training"
+                description={`Join ${SITE_CONFIG.name} — Haveri's most trusted abacus & vedic maths institute since ${SITE_CONFIG.foundedYear}. Certified courses for children across ${SITE_CONFIG.serviceAreas.join(', ')}.`}
+                canonical="/"
+                jsonLd={[
+                    buildLocalBusinessSchema(),
+                    buildBreadcrumbSchema([{ name: 'Home', url: '/' }]),
+                ]}
+            />
+
             {/* Sticky Reading Progress Bar */}
             <motion.div
                 className="fixed top-0 left-0 right-0 h-1.5 bg-orange-500 origin-left z-[100]"
@@ -119,8 +140,9 @@ const Home = () => {
                         <div className="absolute inset-0 bg-black/50 z-10" />
                         <img
                             src={slides[currentSlide].image}
-                            alt="Hero Background"
+                            alt="Abacus and vedic maths training classes at Aryabhata Academy, Haveri, Karnataka"
                             className="w-full h-full object-cover"
+                            fetchPriority="high"
                         />
                     </motion.div>
                 </AnimatePresence>
@@ -204,9 +226,9 @@ const Home = () => {
                         variants={staggerContainer}
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                     >
-                        {services.map(service => (
+                        {allServices.slice(0, 3).map(service => (
                             <motion.div key={service.id} variants={fadeInUp}>
-                                <ServiceCard service={service} />
+                                <ServiceCard service={service} compact={true} />
                             </motion.div>
                         ))}
                     </motion.div>
@@ -231,6 +253,10 @@ const Home = () => {
                     >
                         <h2 className="text-3xl font-bold text-slate-900">Our Branches</h2>
                         <p className="text-slate-600 mt-2 mb-6">Find a center near you to start your journey with us.</p>
+                        {/* Local SEO: city mention for Google indexing */}
+                        <p className="text-sm text-slate-400 mt-1">
+                            Serving students in {SITE_CONFIG.serviceAreas.join(', ')} and across Haveri district, Karnataka.
+                        </p>
                         <Link to="/branches" className="text-orange-600 font-semibold hover:text-orange-700 inline-flex items-center gap-1">
                             View All Branches <ArrowRight size={18} />
                         </Link>
@@ -250,7 +276,7 @@ const Home = () => {
                         >
                             {branches.map(branch => (
                                 <motion.div key={branch.id} variants={fadeInUp} className="h-full">
-                                    <BranchCard branch={branch} />
+                                    <BranchCard branch={branch} compact={true} />
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -442,12 +468,12 @@ const Home = () => {
                                 <div key={i} className="h-[400px] bg-white/5 animate-pulse rounded-[2rem]" />
                             ))}
                         </div>
-                    ) : specialClasses.length > 2 ? (
+                    ) : specialServices.length > 2 ? (
                         <Carousel
-                            items={specialClasses}
-                            renderItem={(item) => (
+                            items={specialServices}
+                            renderItem={(service) => (
                                 <div className="px-2 h-full flex">
-                                    <SpecialClassCard item={item} />
+                                    <ServiceCard service={service} compact={true} />
                                 </div>
                             )}
                         />
@@ -457,11 +483,11 @@ const Home = () => {
                             whileInView="visible"
                             viewport={{ once: true }}
                             variants={staggerContainer}
-                            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
                         >
-                            {specialClasses.map(item => (
-                                <motion.div key={item.id} variants={fadeInUp} className="h-full">
-                                    <SpecialClassCard item={item} />
+                            {specialServices.map(service => (
+                                <motion.div key={service.id} variants={fadeInUp} className="h-full">
+                                    <ServiceCard service={service} compact={true} />
                                 </motion.div>
                             ))}
                         </motion.div>

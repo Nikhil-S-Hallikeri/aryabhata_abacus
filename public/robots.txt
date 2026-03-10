@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block admin or private routes if added in future
+# Disallow: /admin/
+
+Sitemap: https://aryabhata-abacus.vercel.app/sitemap.xml

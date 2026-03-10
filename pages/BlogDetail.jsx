@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, Share2, Clock, Bookmark, ChevronRight, MessageSquare } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { getBlogBySlug, getBlogs } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildBlogPostSchema } from '../components/schema/BlogPostSchema';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const BlogDetail = () => {
     const { slug } = useParams();
@@ -54,6 +57,21 @@ const BlogDetail = () => {
 
     return (
         <div className="pb-24 bg-white min-h-screen relative">
+            <SEOHead
+                title={blog.title}
+                description={blog.excerpt || blog.description || `${blog.title} — Read the full article on Aryabhata Academy's blog.`}
+                canonical={`/blogs/${blog.slug}`}
+                image={blog.imageUrl}
+                type="article"
+                jsonLd={[
+                    buildBlogPostSchema(blog),
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Blog', url: '/blogs' },
+                        { name: blog.title },
+                    ]),
+                ]}
+            />
             {/* Sticky Reading Progress Bar */}
             <motion.div
                 className="fixed top-0 left-0 right-0 h-1.5 bg-orange-500 origin-left z-[100]"

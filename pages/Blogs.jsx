@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight } from 'lucide-react';
 import BlogCard from '../components/BlogCard';
 import { getBlogs } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -52,6 +54,17 @@ const Blogs = () => {
 
     return (
         <div className="pb-20 bg-slate-50 min-h-screen">
+            <SEOHead
+                title="Blog | Abacus Tips, Education & Learning Insights"
+                description="Read expert articles on abacus benefits, vedic maths techniques, mental arithmetic tips, and education insights from Aryabhata Academy, Haveri."
+                canonical="/blogs"
+                jsonLd={[
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Blog', url: '/blogs' },
+                    ]),
+                ]}
+            />
             {/* Full-screen Knowledge Hero */}
             <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">

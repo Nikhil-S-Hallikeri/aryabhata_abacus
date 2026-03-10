@@ -1,9 +1,45 @@
-import React from 'react';
-import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { submitEnquiry } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildLocalBusinessSchema } from '../components/schema/LocalBusinessSchema';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const Contact = () => {
     // Animation Variants
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        try {
+            const result = await submitEnquiry(formData);
+            console.log('Submission Success:', result);
+            setStatus('success');
+            setFormData({ name: '', email: '', phone: '', message: '' });
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch (error) {
+            console.error('Full Submission Error:', error);
+            setStatus('error');
+            // Show more details in console for the user to copy
+            if (error.message) console.log('Error Message:', error.message);
+            if (error.details) console.log('Error Details:', error.details);
+            if (error.hint) console.log('Error Hint:', error.hint);
+            setTimeout(() => setStatus('idle'), 5000);
+        }
+    };
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
     const fadeInUp = {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -21,6 +57,18 @@ const Contact = () => {
 
     return (
         <div className="pb-20 min-h-screen text-center">
+            <SEOHead
+                title="Contact Us | Aryabhata Abacus Academy - Haveri"
+                description="Contact Aryabhata Abacus Academy in Haveri, Karnataka. Call, WhatsApp, or send a message for admissions, franchise inquiries, and course information."
+                canonical="/contact"
+                jsonLd={[
+                    buildLocalBusinessSchema(),
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Contact', url: '/contact' },
+                    ]),
+                ]}
+            />
             <div className="relative bg-slate-900 text-white min-h-screen flex flex-col justify-center py-16 text-center overflow-hidden">
                 <div className="absolute inset-0 z-0 opacity-30">
                     <motion.img
@@ -94,22 +142,88 @@ const Contact = () => {
                         </div>
                     </motion.div>
 
-                    {/* Map Placeholder */}
+                    {/* Contact Form */}
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={slideInRight}
-                        className="bg-slate-100 rounded-xl h-full min-h-[400px] flex items-center justify-center border border-slate-200"
+                        className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-white"
                     >
-                        <div className="text-center p-8">
-                            <MapPin size={48} className="text-slate-400 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-slate-600">Main Campus Location</h3>
-                            <p className="text-slate-500">123 Education Lane, City Center</p>
-                            <button className="mt-4 px-6 py-2 bg-white text-slate-900 font-medium rounded shadow-sm hover:shadow-md transition-shadow">
-                                Open in Maps
+                        <h2 className="text-3xl font-black text-slate-900 mb-8 text-left">Send a Message</h2>
+                        <form onSubmit={handleSubmit} className="space-y-6 text-left">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-slate-500 ml-1">Full Name</label>
+                                    <input
+                                        required
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        placeholder="John Doe"
+                                        className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-slate-500 ml-1">Email Address</label>
+                                    <input
+                                        required
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="john@example.com"
+                                        className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-slate-500 ml-1">Phone Number</label>
+                                <input
+                                    required
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="+1 (555) 000-0000"
+                                    className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-slate-500 ml-1">How can we help?</label>
+                                <textarea
+                                    required
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    rows="4"
+                                    placeholder="Tell us about your interest..."
+                                    className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all resize-none"
+                                ></textarea>
+                            </div>
+
+                            <button
+                                disabled={status === 'loading'}
+                                type="submit"
+                                className={`w-full py-4 rounded-2xl font-black text-white flex items-center justify-center gap-3 transition-all shadow-xl ${status === 'success' ? 'bg-green-500 shadow-green-500/30' :
+                                    status === 'error' ? 'bg-red-500 shadow-red-500/30' :
+                                        'bg-slate-900 hover:bg-orange-500 shadow-slate-900/20'
+                                    }`}
+                            >
+                                {status === 'loading' ? (
+                                    <div className="animate-spin h-6 w-6 border-2 border-white rounded-full border-t-transparent"></div>
+                                ) : status === 'success' ? (
+                                    <>Message Sent! <CheckCircle2 size={20} /></>
+                                ) : status === 'error' ? (
+                                    <>Something went wrong</>
+                                ) : (
+                                    <>Send Enquiry <Send size={20} /></>
+                                )}
                             </button>
-                        </div>
+                        </form>
                     </motion.div>
 
                 </div>

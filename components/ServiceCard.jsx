@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service, compact = false }) => {
     return (
         <motion.div
             whileHover={{ y: -8 }}
-            className="group relative bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-200/40"
+            className={`group relative bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-200/40 h-full`}
         >
             {/* Image Section */}
-            <div className="relative h-64 overflow-hidden">
+            <div className={`relative ${compact ? 'h-48' : 'h-64'} overflow-hidden`}>
                 <img
                     src={service.imageUrl}
                     alt={service.title}
@@ -35,8 +35,8 @@ const ServiceCard = ({ service }) => {
             </div>
 
             {/* Content Section */}
-            <div className="p-8">
-                <h3 className="text-2xl font-black text-slate-900 mb-3 group-hover:text-orange-500 transition-colors">
+            <div className={compact ? 'p-6' : 'p-8'}>
+                <h3 className={`${compact ? 'text-xl' : 'text-2xl'} font-black text-slate-900 mb-2 group-hover:text-orange-500 transition-colors`}>
                     {service.title}
                 </h3>
                 <p className="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-2 font-medium">

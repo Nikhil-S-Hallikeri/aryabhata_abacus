@@ -1,33 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ServiceCard from '../components/ServiceCard';
-import { getServices } from '../services/api';
+import { getServices, getBranches } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const Services = () => {
     const [services, setServices] = useState([]);
-    const [filteredServices, setFilteredServices] = useState([]);
-    const [filter, setFilter] = useState('All');
-    const [loading, setLoading] = useState(true);
 
-    const categories = ['All', 'Abacus', 'Fashion Design', 'Drawing', 'Spoken English'];
+    const [branches, setBranches] = useState([]);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [loading, setLoading] = useState(true);
+    const filter = searchParams.get('category')?.toLowerCase() || 'all';
+
+    // Helper to generate slug from category name
+    const slugify = (text) => (text || '').toLowerCase().trim().replace(/\s+/g, '-');
+
+    // Helper to find category name from slug
+    const findCategoryBySlug = (slug, categories) => {
+        if (!slug || slug === 'all') return 'all';
+        return categories.find(cat => slugify(cat) === slug) || 'all';
+    };
+
+    const [categories, setCategories] = useState(['All']);
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await getServices();
             setServices(data);
-            setFilteredServices(data);
+
+
+            // Dynamic categories from data
+            const uniqueCategories = ['All', ...new Set(data.map(s => s.category).filter(Boolean))];
+            setCategories(uniqueCategories);
+
             setLoading(false);
+
         };
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (filter === 'All') {
-            setFilteredServices(services);
-        } else {
-            setFilteredServices(services.filter(s => s.category === filter));
-        }
+    const filteredServices = useMemo(() => {
+        if (filter === 'all') return services;
+        return services.filter(s => slugify(s.category) === filter);
     }, [filter, services]);
+
+    const handleFilterChange = (cat) => {
+        const newParams = new URLSearchParams(searchParams);
+        const slugifiedCat = slugify(cat);
+        if (slugifiedCat === 'all') {
+            newParams.delete('category');
+        } else {
+            newParams.set('category', slugifiedCat);
+        }
+        setSearchParams(newParams);
+    };
 
     // Animation Variants
     const fadeInUp = {
@@ -47,6 +75,17 @@ const Services = () => {
 
     return (
         <div className="pb-20 bg-slate-50 min-h-screen">
+            <SEOHead
+                title="Our Programs | Abacus, Vedic Maths & Fashion Design Courses"
+                description="Explore certified abacus, vedic mathematics, mental arithmetic, and fashion design courses at Aryabhata Academy, Haveri. Programs for all ages and skill levels."
+                canonical="/services"
+                jsonLd={[
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Programs', url: '/services' },
+                    ]),
+                ]}
+            />
             {/* Premium Hero Section */}
             <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -105,15 +144,14 @@ const Services = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                {/* Modern Filters */}
-                <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-8">
-                    <h2 className="text-2xl font-bold text-slate-900">Explore Categories</h2>
+                <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+                    <h2 className="text-3xl font-black text-slate-900 border-l-4 rounded border-orange-500 pl-4">Explore Our Programs</h2>
                     <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex flex-wrap justify-center gap-3">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
-                                onClick={() => setFilter(cat)}
-                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all border ${filter === cat
+                                onClick={() => handleFilterChange(cat)}
+                                className={`px-6 py-2 rounded-xl text-sm font-bold transition-all border ${slugify(cat) === filter
                                     ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-900/20'
                                     : 'bg-white text-slate-500 border-slate-100 hover:border-orange-200 hover:text-orange-500'
                                     }`}
@@ -132,6 +170,7 @@ const Services = () => {
                     </div>
                 ) : filteredServices.length > 0 ? (
                     <motion.div
+                        key={filter}
                         initial="hidden"
                         animate="visible"
                         variants={staggerContainer}
@@ -146,7 +185,7 @@ const Services = () => {
                 ) : (
                     <div className="text-center py-20 text-slate-500">
                         <p className="text-xl">No services found in this category.</p>
-                        <button onClick={() => setFilter('All')} className="mt-4 text-orange-500 font-bold underline">Clear filters</button>
+                        <button onClick={() => handleFilterChange('All')} className="mt-4 text-orange-500 font-bold underline">Clear filters</button>
                     </div>
                 )}
             </div>

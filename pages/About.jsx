@@ -1,6 +1,8 @@
 import React from 'react';
 import { Award, Users, Target, Sparkles, GraduationCap, Quote, CheckCircle2, Heart, Feather, History } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEOHead from '../components/SEOHead';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const About = () => {
     // Animation Variants
@@ -21,6 +23,17 @@ const About = () => {
 
     return (
         <div className="pb-20 min-h-screen">
+            <SEOHead
+                title="About Us | 14 Years of Abacus Excellence in Haveri"
+                description="Learn about Aryabhata Abacus & Vedic Maths Academy — founded in 2010 by Jayalakshmi, serving 5000+ students across 8+ branches in Haveri, Karnataka."
+                canonical="/about"
+                jsonLd={[
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'About Us', url: '/about' },
+                    ]),
+                ]}
+            />
             {/* Immersive Hero Section */}
             <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden">
                 <div className="absolute inset-0 z-0">

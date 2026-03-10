@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { MapPin, Phone, ArrowLeft, CheckCircle, Clock, Sparkles, Building2, Users2, ShieldCheck, Star } from 'lucide-react';
+import { MapPin, Phone, ArrowLeft, CheckCircle, Clock, Sparkles, Building2, Users2, ShieldCheck, Star, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getBranchBySlug, getServices } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildLocalBusinessSchema } from '../components/schema/LocalBusinessSchema';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
+import FormattedText from '../components/FormattedText';
 
 const BranchDetail = () => {
     const { slug } = useParams();
@@ -19,7 +23,10 @@ const BranchDetail = () => {
 
             if (branchData) {
                 const allServices = await getServices();
-                const offering = allServices.filter(s => branchData.serviceIds.includes(s.id));
+                const offering = allServices.filter(s =>
+                    branchData.serviceIds?.includes(s.id) ||
+                    branchData.serviceIds?.includes(s.slug)
+                );
                 setOfferedServices(offering);
             }
             setLoading(false);
@@ -48,6 +55,20 @@ const BranchDetail = () => {
 
     return (
         <div className="pb-20 min-h-screen bg-slate-50">
+            <SEOHead
+                title={`${branch.name} | Abacus Center in ${branch.address?.split(',').pop()?.trim() || 'Haveri'}`}
+                description={`Aryabhata Abacus center in ${branch.name}: ${branch.description?.substring(0, 130) || 'Certified abacus and vedic maths training. Expert faculty, modern facilities.'}`}
+                canonical={`/branches/${branch.slug}`}
+                image={branch.imageUrl}
+                jsonLd={[
+                    buildLocalBusinessSchema(branch),
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Branches', url: '/branches' },
+                        { name: branch.name },
+                    ]),
+                ]}
+            />
             {/* Premium Full-screen Hero Header */}
             <div className="relative min-h-screen bg-slate-900 flex flex-col justify-center items-center text-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -75,9 +96,12 @@ const BranchDetail = () => {
                         <h1 className="text-5xl md:text-8xl font-black text-white mb-8 drop-shadow-2xl leading-tight">
                             {branch.name}
                         </h1>
-                        <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                            {branch.description}
-                        </p>
+                        <div className="mb-10">
+                            <FormattedText
+                                content={branch.description}
+                                className="text-white text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed text-center"
+                            />
+                        </div>
                         <div className="flex flex-wrap justify-center gap-6">
                             <Link to="/branches" className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-bold transition-all group">
                                 <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> Explore Network
@@ -166,6 +190,16 @@ const BranchDetail = () => {
                             >
                                 Get Directions
                             </a>
+                            {branch.websiteUrl && (
+                                <a
+                                    href={branch.websiteUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="w-full flex items-center justify-center gap-2 py-3 bg-sky-50 text-sky-600 rounded-xl font-black hover:bg-sky-600 hover:text-white transition-all shadow-sm shadow-sky-100"
+                                >
+                                    <Globe size={18} /> Visit Official Website
+                                </a>
+                            )}
                         </div>
 
                         {/* Hours & Phone */}

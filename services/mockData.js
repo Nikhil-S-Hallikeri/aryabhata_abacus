@@ -1,160 +1,204 @@
 export const servicesData = [
     {
         id: 's1',
-        slug: 'abacus-mastery',
-        title: 'Abacus Mastery',
-        shortDescription: 'Boost brain power and calculation speed with our proven Abacus curriculum.',
-        fullDescription: 'Our Abacus Mastery program is designed to enhance cognitive skills, concentration, and mathematical ability in children. Through a structured curriculum using the physical abacus tool, students learn to visualize calculations and perform complex arithmetic with speed and accuracy.',
-        category: 'Abacus',
+        slug: 'abacus',
+        title: 'Abacus',
+        shortDescription: 'Cognitive Skill Development',
+        fullDescription: '*Mental Math Mastery:* Abacus helps students in transition from physical manipulation to high-speed mental calculation, significantly improving their ability to process numerical data rapidly.\n*Enhanced Concentration & Focus:* The structured, multi-sensory learning process actively trains the mind to sustain focus for longer periods.\n*Superior Memory Recall:* Regular practice strengthens visual and working memory, which benefits overall academic performance.\n*Curriculum Standard:* Utilizes an internationally-recognized framework to ensure consistent, measurable progress and establish a strong, foundational understanding for advanced mathematics, including algebra and calculus.',
+        category: 'Math',
         isSeasonal: false,
         imageUrl: 'https://images.unsplash.com/photo-1596495573105-31bc9d4979d8?auto=format&fit=crop&q=80&w=800',
-        outcomes: ['3x Faster Mental Calculations', 'Improved Photographic Memory', 'Enhanced Concentration Levels', 'Better Logical Reasoning'],
+        outcomes: ['Mental Math Mastery', 'Enhanced Concentration', 'Superior Memory Recall', 'Strong Math Foundations'],
         curriculum: [
-            { level: 'Level 1', title: 'Basic Bead Movement', details: 'Introduction to the abacus, finger movements, and 1-digit addition/subtraction.' },
-            { level: 'Level 2', title: 'Small Friends Formula', details: 'Learning formulas for numbers adding up to 5.' },
-            { level: 'Level 3', title: 'Big Friends & Mixed', details: 'Calculations using base 10 and complex mixed formulas.' }
+            { level: 'Foundation', title: 'Basic Operations', details: 'Introduction to the abacus tool, finger movements, and 1-digit addition/subtraction.' },
+            { level: 'Intermediate', title: 'Visualization', details: 'Transitioning from physical beads to mental image calculation for 2-digit numbers.' },
+            { level: 'Advanced', title: 'Speed Mastery', details: 'High-speed mental multiplication and division using level-specific formulas.' }
         ],
-        classes: [
-            { id: 'c1', title: 'Beginner Level 1', duration: '3 Months', ageGroup: '5-7 Years' },
-            { id: 'c2', title: 'Intermediate Level', duration: '6 Months', ageGroup: '8-12 Years' }
-        ]
+        classes: [{ id: 'c1', title: 'Standard Batch', duration: '1.5 Hours', ageGroup: '5-12 Years' }]
     },
     {
         id: 's2',
         slug: 'vedic-maths',
-        title: 'Vedic Mathematics',
-        shortDescription: 'Ancient techniques for solving complex math problems in seconds.',
-        fullDescription: 'Vedic Mathematics is a collection of techniques/sutras to solve mathematical arithmetics in easy and faster way. It consists of 16 Sutras (Formulae) and 13 sub-sutras (Sub Formulae) which can be used for problems involved in arithmetic, algebra, geometry, calculus, conics.',
-        category: 'Abacus',
-        isSeasonal: true,
-        imageUrl: 'https://images.unsplash.com/photo-1635372722656-389f87a941b7?auto=format&fit=crop&q=80&w=800',
-        outcomes: ['Solve Square Roots in Seconds', 'Speed up Algebra Calculations', 'Eliminate Math Phobia', 'Competitive Exam Edge'],
+        title: 'Vedic Maths',
+        shortDescription: 'Accelerated Mathematical Systems',
+        fullDescription: 'Rapid Problem-Solving: Introduces powerful, intuitive "sutras" (formulae) that enable single-line solutions for multi-digit multiplication, division, squares, and cubes.\nBoosted Numerical Aptitude: Develops a deeper, intuitive understanding of numerical relationships, making mathematics engaging and less intimidating.\nCritical Thinking Enhancement: Encourages students to choose the most efficient method for a given problem, fostering strategic thinking.\nApplication: Ideal for students preparing for competitive exams, as it significantly reduces calculation time while maintaining accuracy.',
+        category: 'Math',
+        isSeasonal: false,
+        imageUrl: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Rapid Problem-Solving', 'Boosted Numerical Aptitude', 'Critical Thinking', 'Competitive Exam Preparation'],
         curriculum: [
-            { level: 'Phase 1', title: 'Sutras Introduction', details: 'Nikhilam and Ekadhikena techniques for fast multiplication.' },
-            { level: 'Phase 2', title: 'Advanced Arithmetic', details: 'Square roots, cube roots, and division sutras.' }
+            { level: 'Phase 1', title: 'Base Sutras', details: 'Mastering Nikhilam and Ekadhikena sutras for rapid multiplication.' },
+            { level: 'Phase 2', title: 'Arithmetic Power', details: 'Solving squares, cubes, and long divisions in a single line.' },
+            { level: 'Phase 3', title: 'Exam Edge', details: 'Application of Vedic techniques to competitive exam problem sets.' }
         ],
-        classes: [
-            { id: 'c3', title: 'Summer Crash Course', duration: '4 Weeks', ageGroup: '10+ Years' }
-        ]
+        classes: [{ id: 'c2', title: 'Expert Batch', duration: '1 Hour', ageGroup: '10+ Years' }]
     },
     {
         id: 's3',
-        slug: 'fashion-illustration',
-        title: 'Fashion Illustration',
-        shortDescription: 'Learn to sketch your designs and bring your creative visions to paper.',
-        fullDescription: 'This course focuses on the artistic side of fashion. Students will learn how to draw the fashion figure (croquis), render different fabric textures, and present their design collections professionally. Ideal for aspiring designers and portfolio building.',
-        category: 'Fashion Design',
+        slug: 'spoken-english',
+        title: 'Spoken English',
+        shortDescription: 'Professional Fluency & Communication',
+        fullDescription: 'Practical Conversational Skills: Focuses on real-world communication, ensuring professional fluency and clarity in diverse environments.\nNeutral Accent & Pronunciation: Intensive training designed to achieve flawless pronunciation and a globally accepted neutral accent.\nAdvanced Grammar Application: Moves beyond basic rules to focus on sophisticated and correct use of grammar in practice.\nExpansive Vocabulary: Dedicated modules for rapid acquisition and confident application of a broad range of vocabulary.',
+        category: 'Communication',
         isSeasonal: false,
-        imageUrl: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800',
-        outcomes: ['Master 9-Head Proportions', 'Hand-Render Silk, Denim & Lace', 'Digitize Portfolio Sketches', 'Professional Presentation Skills'],
+        imageUrl: 'https://images.unsplash.com/photo-1543269664-56d93c1b41a6?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Conversational Fluency', 'Accent Correction', 'Grammar Mastery', 'Vocabulary Expansion'],
         curriculum: [
-            { level: 'Module 1', title: 'Anatomy of Croquis', details: 'Building the fashion figure from basic bone structures.' },
-            { level: 'Module 2', title: 'Fabric Rendering', details: 'Using markers and watercolors to depict different materials.' }
+            { level: 'Beginner', title: 'Communication Core', details: 'Basic sentence formation, daily use phrases, and confidence building.' },
+            { level: 'Intermediate', title: 'Grammar & Accent', details: 'Tense mastery, pronunciation correction, and active listening skills.' },
+            { level: 'Advanced', title: 'Public Speaking', details: 'Professional presentation skills, debates, and formal communication.' }
         ],
-        classes: [
-            { id: 'c4', title: 'Sketching Basics', duration: '2 Months', ageGroup: '16+ Years' },
-            { id: 'c5', title: 'Digital Illustration', duration: '3 Months', ageGroup: '16+ Years' }
-        ]
+        classes: [{ id: 'c3', title: 'Fluency Track', duration: '2 Months', ageGroup: 'All Ages' }]
     },
     {
         id: 's4',
-        slug: 'pattern-making',
-        title: 'Pattern Making & Sewing',
-        shortDescription: 'Construct garments from scratch with professional pattern making techniques.',
-        fullDescription: 'Master the technical skills required to turn a sketch into a wearable garment. This comprehensive course covers measurement taking, drafting blocks, pattern manipulation, and industrial sewing techniques.',
-        category: 'Fashion Design',
+        slug: 'karate',
+        title: 'Karate',
+        shortDescription: 'Discipline & Physical Mastery',
+        fullDescription: 'Core Value Instillation: Focuses on fostering discipline, unwavering focus, respect, and superior physical fitness.\nSelf-Defense Applications: Systematic training in practical, effective self-defense techniques.\nMastery of Forms (Katas): Rigorous instruction in traditional forms, controlled sparring, and strength development.\nMental Resilience: Builds confidence and mental toughness required for success both inside and outside the dojo.',
+        category: 'Martial Arts',
         isSeasonal: false,
-        imageUrl: 'https://images.unsplash.com/photo-1520033503123-3f30999947fd?auto=format&fit=crop&q=80&w=800',
-        outcomes: ['Create Custom-Fit Blocks', 'Master Industrial Sewing', 'Understanding Grain Lines', 'Garment Assembly Excellence'],
+        imageUrl: 'https://images.unsplash.com/photo-1552072805-2a9039d00e57?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Discipline & Focus', 'Self-Defense Skills', 'Physical Fitness', 'Mental Resilience'],
         curriculum: [
-            { level: 'Stage 1', title: 'Basic Bodice Block', details: 'Drafting the foundation for all upper-body garments.' },
-            { level: 'Stage 2', title: 'Darts & Manipulation', details: 'Techniques for fitting and creative design changes.' }
+            { level: 'Primary', title: 'Basic Stances', details: 'Learning fundamental strikes, blocks, and basic body balance.' },
+            { level: 'Intermediate', title: 'Kata & Defense', details: 'Introduction to traditional forms and controlled self-defense maneuvers.' },
+            { level: 'Mastery', title: 'Sparring & Spirit', details: 'Advanced sparring techniques and development of mental fortitude.' }
         ],
-        classes: [
-            { id: 'c6', title: 'Garment Construction', duration: '6 Months', ageGroup: 'Adults' }
-        ]
+        classes: [{ id: 'c4', title: 'Dojo Batch', duration: 'Daily/Weekly', ageGroup: '6+ Years' }]
     },
     {
         id: 's5',
-        slug: 'creative-drawing',
-        title: 'Creative Drawing & Sketching',
-        shortDescription: 'Master the art of observation and expression through various drawing mediums.',
-        fullDescription: 'Our Drawing & Sketching program is designed for students of all ages who want to develop their artistic voice. From pencil shading to charcoal and pastels, we cover the fundamentals of light, shadow, and perspective.',
-        category: 'Drawing',
+        slug: 'hand-writing',
+        title: 'Hand Writing',
+        shortDescription: 'Legibility & Efficiency',
+        fullDescription: 'Improved Penmanship: Specialized program aimed at dramatically improving legibility and consistency in handwriting.\nEfficiency (Speed) Enhancement: Techniques introduced to increase writing speed without sacrificing clarity.\nFundamental Mechanics: Comprehensive course addressing correct ergonomic grip, optimal writing posture, and precise letter formation.\nProfessional Standard: Results in clear, aesthetically pleasing, and professional-grade handwriting suitable for all academic and career needs.',
+        category: 'Skills',
         isSeasonal: false,
-        imageUrl: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800',
-        outcomes: ['Photorealistic Shading', 'Perspective Mastery', 'Medium Versatility', 'Exhibition Portfolio'],
+        imageUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Improved Penmanship', 'Increased Writing Speed', 'Correct Grip & Posture', 'Aesthetic Clarity'],
         curriculum: [
-            { level: 'Level 1', title: 'Pencil Mastery', details: 'Understanding values, textures, and basic shapes.' },
-            { level: 'Level 2', title: 'Still Life & Live Sketching', details: 'Drawing from observation with focus on depth.' }
+            { level: 'Basics', title: 'Grip & Posture', details: 'Correcting technical aspects: pen hold, seating posture, and paper angle.' },
+            { level: 'Formation', title: 'Letter Geometry', details: 'Systematic practice of letter curves, heights, and consistent slant.' },
+            { level: 'Speed', title: 'Fluid Writing', details: 'Increasing words-per-minute while maintaining professional legibility.' }
         ],
-        classes: [
-            { id: 'c7', title: 'Young Artists', duration: 'Ongoing', ageGroup: '6-12 Years' },
-            { id: 'c8', title: 'Advanced Portfolio', duration: '6 Months', ageGroup: '14+ Years' }
-        ]
+        classes: [{ id: 'c5', title: 'Penmanship Class', duration: '1 Month', ageGroup: 'All Ages' }]
     },
     {
         id: 's6',
-        slug: 'spoken-english',
-        title: 'Spoken English & Communication',
-        shortDescription: 'Build confidence and fluency in English for professional and personal success.',
-        fullDescription: 'Communication is the key to leadership. Our course focuses on public speaking, active listening, and refined grammar, ensuring students can express themselves clearly in any environment.',
-        category: 'Spoken English',
+        slug: 'drawing-and-craft',
+        title: 'Drawing and Craft',
+        shortDescription: 'Creative Expression & Fine Motor Skills',
+        fullDescription: 'Imaginative Conceptualization: Intensive program that cultivates creative expression and the ability to visualize and conceptualize ideas.\nRefined Fine Motor Skills: Hands-on practice designed to significantly improve dexterity and control.\nMedium Mastery: Practical experience exploring and mastering a variety of artistic mediums, including sketching, painting, and diverse crafting techniques.\nConfident Artistic Development: Enables students to confidently explore and develop their unique artistic voice.',
+        category: 'Arts',
         isSeasonal: false,
-        imageUrl: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800',
-        outcomes: ['Fluent Public Speaking', 'Business Writing Basics', 'Active Listening Skills', 'Confidence in Interviews'],
+        imageUrl: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Creative Visualization', 'Fine Motor Control', 'Medium Mastery', 'Artistic Confidence'],
         curriculum: [
-            { level: 'Phase 1', title: 'Confidence Building', details: 'Overcoming stage fear and basic sentence structure.' },
-            { level: 'Phase 2', title: 'Professional Etiquette', details: 'Formal communication and presentation skills.' }
+            { level: 'Foundation', title: 'Sketching Basics', details: 'Understanding lines, shapes, light, and shadow through pencil work.' },
+            { level: 'Creative', title: 'Color Exploration', details: 'Working with watercolors, oil pastels, and basic color theory.' },
+            { level: 'Design', title: 'Crafting Skills', details: '3D paper crafts, clay modeling, and imaginative project building.' }
         ],
-        classes: [
-            { id: 'c9', title: 'Fluency Fast-track', duration: '3 Months', ageGroup: 'Open' }
-        ]
+        classes: [{ id: 'c6', title: 'Creative Kids', duration: 'Ongoing', ageGroup: '5+ Years' }]
+    },
+    {
+        id: 's7',
+        slug: 'fashion-designing',
+        title: 'Fashion Designing',
+        shortDescription: 'Foundational Industry Knowledge',
+        fullDescription: 'Core Design Principles: Provides a thorough understanding of foundational design principles and professional color theory.\nTechnical Skills: Training in essential techniques, including technical sketching and textile knowledge.\nIndustry Insight: Imparts crucial fundamental skills necessary for entry-level work or further study in apparel creation.\nModule Objective: To offer an insightful introductory module to the broader fashion and garment industry.',
+        category: 'Design',
+        isSeasonal: false,
+        imageUrl: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Design Principles Mastery', 'Technical Sketching', 'Textile Knowledge', 'Industry Insight'],
+        curriculum: [
+            { level: 'Module 1', title: 'Visual Design', details: 'Introduction to color psychology, silhouettes, and mood boards.' },
+            { level: 'Module 2', title: 'Technical Drawing', details: 'Drafting garment flats and learning basic textile categorization.' },
+            { level: 'Module 3', title: 'Draping Basics', details: 'Fundamental patterns and understanding fabric behavior on dress forms.' }
+        ],
+        classes: [{ id: 'c7', title: 'Fashion Start', duration: '6 Months', ageGroup: '15+ Years' }]
+    },
+    {
+        id: 's8',
+        slug: 'aari-work',
+        title: 'Aari Work',
+        shortDescription: 'Professional Embroidery Techniques',
+        fullDescription: 'Traditional Skill Acquisition: Teaches the highly sought-after, traditional form of intricate chain stitch embroidery.\nSpecialized Tool Use: Expert instruction on utilizing the specialized Aari (hooked needle).\nHigh-End Detailing: Focuses on detailed, professional-level embroidery techniques for creating exquisite designs on various fabrics.\nEntrepreneurial Application: Skills are suitable for creating high-end garments and pursuing entrepreneurial ventures in custom embroidery.',
+        category: 'Craft',
+        isSeasonal: false,
+        imageUrl: 'https://images.unsplash.com/photo-1506806732259-39c2d4a32127?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Chain Stitch Embroidery', 'Aari Tool Mastery', 'Professional Detailing', 'Boutique Entrepreneurship'],
+        curriculum: [
+            { level: 'Level 1', title: 'The Hook Technique', details: 'Mastering the Aari needle and basic fabric mounting methods.' },
+            { level: 'Level 2', title: 'Embellishments', details: 'Integrating beads, stones, and Zardosi work into intricate patterns.' },
+            { level: 'Level 3', title: 'Design Layouts', details: 'Planning and executing heavy bridal blouse designs and motifs.' }
+        ],
+        classes: [{ id: 'c8', title: 'Embroidery Studio', duration: '3 Months', ageGroup: 'Adults' }]
+    },
+    {
+        id: 's9',
+        slug: 'navodaya',
+        title: 'Navodaya',
+        shortDescription: 'JNVST Exam Preparation',
+        fullDescription: 'Comprehensive Coverage: Meticulous training across all three mandatory sections: the Mental Ability Test (MAT), the Arithmetic Test (AT), and the Language Test (LT).\nTargeted Study Materials: Access to systematically curated and updated materials, focusing exclusively on the official JNVST syllabus and exam pattern.\nPerformance Tracking: Implementation of intensive practice sessions, weekly sectional tests, and full-length, performance-driven mock examinations under simulated exam conditions.\nObjective: To equip students with the necessary knowledge, speed, and test-taking strategies required to secure admission to the prestigious Jawahar Navodaya Vidyalaya institutions.',
+        category: 'Education',
+        isSeasonal: false,
+        imageUrl: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=800',
+        outcomes: ['Secure JNV Admission', 'Master Mental Ability', 'Arithmetic Proficiency', 'Language Excellence'],
+        curriculum: [
+            { level: 'Unit 1', title: 'Mental Ability', details: 'Non-verbal reasoning, visual patterns, and odd-one-out techniques.' },
+            { level: 'Unit 2', title: 'Arithmetic Power', details: 'Fractions, decimals, percentages, and competitive math speed.' },
+            { level: 'Unit 3', title: 'Language Skills', details: 'Reading comprehension mastery and vocabulary building for LT.' }
+        ],
+        classes: [{ id: 'c9', title: 'JNVST Batch', duration: 'Ongoing', ageGroup: '10-12 Years' }]
     }
 ];
 
 export const branchesData = [
     {
         id: 'b1',
-        slug: 'main-campus-downtown',
-        name: 'Main Campus - Downtown',
+        slug: 'haveri-main-branch',
+        name: 'Haveri Main Branch',
         type: 'Main Campus',
-        description: 'Our flagship institution located in the heart of the city, featuring state-of-the-art facilities and our most experienced faculty.',
-        address: '123 Education Lane, City Center',
-        phone: '+1 234 567 8900',
-        imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756ebafe1?auto=format&fit=crop&q=80&w=1200',
-        serviceIds: ['s1', 's2', 's3', 's4', 's5', 's6'],
-        facilities: ['Olympic-size Design Studio', 'Advanced Abacus Lab', 'Auditorium', 'Smart Classrooms'],
-        hours: 'Mon-Sat: 9:00 AM - 8:00 PM',
-        stats: { students: '500+', faculty: '25+' }
+        description: 'Our central hub led by Founder Shilpa(Kavya) Kotresh Gadad, offering a comprehensive suite of cognitive and creative programs.',
+        address: 'Aryabhata Abacus, Behind Geleyara Balaga Primary School, Opp. J H Patel Circle, Haveri - 581110',
+        phone: '9986396375, 7996515656',
+        email: 'aryabhataabacus2019@gmail.com',
+        imageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1200',
+        serviceIds: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'],
+        facilities: ['Modern Classrooms', 'Abacus Lab', 'Fashion Studio', 'Martial Arts Dojo'],
+        hours: 'Tue-Sat: 3:30 PM - 7:00 PM, Sun: 8:00 AM - 11:30 AM',
+        stats: { students: '1000+', faculty: '40+' },
+        founder: 'Shilpa(Kavya) Kotresh Gadad',
+        qualification: 'Dip.C.Sc, (PGDCA), MA, Eco. So.'
     },
     {
         id: 'b2',
-        slug: 'westside-franchise',
-        name: 'Westside Academy',
+        slug: 'haveri-2',
+        name: 'Haveri 2',
         type: 'Franchise',
-        description: 'A vibrant learning hub serving the western district, specializing in primary education and abacus mastery.',
-        address: '456 Creative Ave, West District',
-        phone: '+1 234 567 8901',
+        description: 'Specialized center focusing on foundation skills including Abacus, Vedic Maths, and Navodaya preparation.',
+        address: 'Haveri, Karnataka',
+        phone: '9986396375',
         imageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1200',
-        serviceIds: ['s1', 's2', 's5'],
-        facilities: ['Interactive Play Zone', 'Modern Math Lab', 'Library'],
+        serviceIds: ['s1', 's2', 's9'],
+        facilities: ['Math-focused Classrooms', 'Study Library'],
         hours: 'Mon-Sat: 10:00 AM - 6:00 PM',
-        stats: { students: '200+', faculty: '12+' }
+        stats: { students: '300+', faculty: '15+' }
     },
     {
         id: 'b3',
-        slug: 'north-hills-studio',
-        name: 'North Hills Fashion Studio',
+        slug: 'agadi-branch',
+        name: 'Agadi Branch',
         type: 'Franchise',
-        description: 'Our specialized studio dedicated to high-end fashion design and advanced illustration techniques.',
-        address: '789 Style Blvd, North Hills',
-        phone: '+1 234 567 8902',
+        description: 'A community-focused learning center providing core Abacus and Vedic Maths programs.',
+        address: 'Agadi, Karnataka',
+        phone: '9986396375',
         imageUrl: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1200',
-        serviceIds: ['s3', 's4', 's5'],
-        facilities: ['Industrial Sewing Machines', 'Drafting Tables', 'Gallery Space'],
-        hours: 'Mon-Fri: 11:00 AM - 7:00 PM',
-        stats: { students: '150+', faculty: '8+' }
+        serviceIds: ['s1', 's2'],
+        facilities: ['Dedicated Math Zone'],
+        hours: 'Mon-Sat: 4:00 PM - 7:00 PM',
+        stats: { students: '150+', faculty: '10+' }
     }
 ];
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getGalleryItems } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const Gallery = () => {
     const [items, setItems] = useState([]);
@@ -46,6 +48,17 @@ const Gallery = () => {
 
     return (
         <div className="pb-20 bg-slate-50 min-h-screen text-center">
+            <SEOHead
+                title="Gallery | Student Life at Aryabhata Abacus Academy"
+                description="Photos and videos of abacus competitions, fashion shows, student achievements, and campus life at Aryabhata Abacus Academy, Haveri, Karnataka."
+                canonical="/gallery"
+                jsonLd={[
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Gallery', url: '/gallery' },
+                    ]),
+                ]}
+            />
             <div className="relative bg-slate-900 text-white min-h-screen flex flex-col justify-center py-16 text-center overflow-hidden">
                 <div className="absolute inset-0 z-0 opacity-30">
                     <motion.img

@@ -3,6 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { Clock, Users, ArrowLeft, Check, Sparkles, BookOpen, Star, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getServiceBySlug, getBranches, getTestimonials } from '../services/api';
+import SEOHead from '../components/SEOHead';
+import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
+
+import FormattedText from '../components/FormattedText';
 
 const ServiceDetail = () => {
     const { slug } = useParams();
@@ -24,8 +28,11 @@ const ServiceDetail = () => {
             setService(serviceData || null);
 
             if (serviceData) {
-                // Filter branches that offer this service
-                const offering = branchesData.filter(b => b.serviceIds.includes(serviceData.id));
+                // Filter branches that offer this service (match by ID or Slug)
+                const offering = Array.isArray(branchesData) ? branchesData.filter(b =>
+                    b.serviceIds?.includes(serviceData.id) ||
+                    b.serviceIds?.includes(serviceData.slug)
+                ) : [];
                 setRelatedBranches(offering);
 
                 // Filter testimonials relevant to the category
@@ -58,6 +65,20 @@ const ServiceDetail = () => {
 
     return (
         <div className="pb-20 min-h-screen">
+            <SEOHead
+                title={`${service.title} | Abacus & Vedic Maths Course in Haveri`}
+                description={`${service.title} at Aryabhata Academy, Haveri. ${service.description?.substring(0, 120) || 'Certified course with expert faculty. Enroll today.'}`}
+                canonical={`/services/${service.slug}`}
+                image={service.imageUrl}
+                type="article"
+                jsonLd={[
+                    buildBreadcrumbSchema([
+                        { name: 'Home', url: '/' },
+                        { name: 'Programs', url: '/services' },
+                        { name: service.title },
+                    ]),
+                ]}
+            />
 
             {/* Premium Hero Header */}
             <div className="relative min-h-screen bg-slate-900 flex flex-col justify-center items-center text-center overflow-hidden">
@@ -119,9 +140,9 @@ const ServiceDetail = () => {
                             <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-3">
                                 <BookOpen className="text-orange-500" size={32} /> Program Overview
                             </h2>
-                            <p className="text-slate-600 text-lg leading-relaxed mb-10">
-                                {service.fullDescription}
-                            </p>
+                            <div className="mb-10">
+                                <FormattedText content={service.fullDescription} />
+                            </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {service.outcomes?.map((outcome, i) => (
@@ -165,7 +186,7 @@ const ServiceDetail = () => {
                         <section className="bg-slate-900 rounded-[2.5rem] p-10 text-white">
                             <h2 className="text-3xl font-black mb-8">Scheduling & Bats</h2>
                             <div className="grid gap-6">
-                                {service.classes.map(cls => (
+                                {service.classes?.map(cls => (
                                     <div key={cls.id} className="bg-white/5 border border-white/10 p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between group hover:bg-white/10 transition-colors">
                                         <div className="text-center md:text-left mb-4 md:mb-0">
                                             <h3 className="text-xl font-bold mb-2">{cls.title}</h3>
