@@ -7,7 +7,7 @@ const ServiceCard = ({ service, compact = false }) => {
     return (
         <motion.div
             whileHover={{ y: -8 }}
-            className={`group relative bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-200/40 h-full`}
+            className={`group relative bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-200/40 h-full w-full`}
         >
             {/* Image Section */}
             <div className={`relative ${compact ? 'h-48' : 'h-64'} overflow-hidden`}>

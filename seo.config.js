@@ -17,19 +17,19 @@ export const SITE_CONFIG = {
 
     // ── Contact & Address ──────────────────────────────────────
     // 🔑 Change here → updates ALL pages & structured data
-    phone: "+91-9876543210",          // ← replace with real phone
-    whatsapp: "919876543210",         // ← replace (no + or spaces)
-    email: "info@aryabhataabacus.com",// ← replace with real email
+    phone: "+91-9986396375, 7996515656",
+    whatsapp: "919986396375",
+    email: "aryabhataabacus2019@gmail.com",
 
     address: {
-        street: "Main Road, Haveri",    // ← replace with real street
+        street: "Behind Geleyara Balaga Primary School, Opp. J H Patel Circle",
         city: "Haveri",
         district: "Haveri",
         state: "Karnataka",
         country: "India",
         countryCode: "IN",
         stateCode: "KA",
-        pincode: "581110",              // ← replace with real pincode
+        pincode: "581110",
     },
 
     // ── Geo Coordinates (for LocalBusiness schema) ─────────────
@@ -57,6 +57,11 @@ export const SITE_CONFIG = {
     // ── Social / Maps ──────────────────────────────────────────
     googleMapsUrl: "https://maps.google.com/?q=Aryabhata+Abacus+Haveri+Karnataka",
     googleBusinessUrl: "", // ← add once Google Business Profile is created
+    social: {
+        instagram: "https://www.instagram.com/aryabhataabacus_haveri/",
+        facebook: "https://www.facebook.com/swarupa.cb?mibextid=ZbWKwL",
+        youtube: "https://www.youtube.com/@aryabhataabacushaveri",
+    },
 
     // ── Business Hours ─────────────────────────────────────────
     openingHours: "Mo-Sa 09:00-18:00",

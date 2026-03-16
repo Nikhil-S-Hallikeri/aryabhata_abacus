@@ -78,12 +78,12 @@ const Branches = () => {
             {/* Full-screen Immersive Hero Section */}
             <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/80 z-10" />
                     <motion.img
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
-                        src="https://images.unsplash.com/photo-1541339907198-e08756ebafe1?auto=format&fit=crop&q=80&w=1600"
+                        src="branches.jpg"
                         alt="Academy Branches"
                         className="w-full h-full object-cover"
                     />
@@ -96,34 +96,43 @@ const Branches = () => {
                     >
                         <motion.span
                             variants={fadeInUp}
-                            className="inline-block px-4 py-1.5 mb-6 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-400 font-semibold tracking-wider text-sm uppercase"
+                            className="inline-block px-4 py-1.5 mb-6 rounded-full bg-sky-500/90 border border-sky-500/30 text-slate-100 font-semibold tracking-wider text-sm uppercase"
                         >
                             City-wide Excellence
                         </motion.span>
                         <motion.h1
                             variants={fadeInUp}
-                            className="text-5xl md:text-8xl font-black mb-6 leading-tight"
+                            className="text-5xl md:text-7xl font-black mb-6 leading-tight"
                         >
                             Our <span className="text-orange-500">Learning</span> Hubs
                         </motion.h1>
                         <motion.p
                             variants={fadeInUp}
-                            className="text-slate-300 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed"
+                            className="text-slate-100 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed"
                         >
                             Find the campus nearest to you. Each of our locations is designed to provide a cohesive, modern, and inspiring environment for every student.
                         </motion.p>
                     </motion.div>
                 </div>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                    className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                >
+                    <span className="text-xs uppercase tracking-widest text-slate-400">Scroll to Explore</span>
+                    <div className="w-1 h-12 rounded-full bg-gradient-to-b from-orange-500 to-transparent animate-pulse" />
+                </motion.div>
             </div>
 
             {/* Quick Stats Overlay */}
             <div className="max-w-7xl mx-auto px-4 -mt-20 relative z-30">
                 <div className="bg-white rounded-3xl p-10 shadow-2xl shadow-slate-200/50 border border-white flex flex-wrap justify-around items-center gap-10">
                     {[
-                        { label: 'Total Branches', value: '15+', color: 'text-orange-500' },
-                        { label: 'Expert Faculty', value: '100+', color: 'text-sky-500' },
-                        { label: 'Enrolled Students', value: '5000+', color: 'text-lime-500' },
-                        { label: 'Success Stories', value: '10k+', color: 'text-orange-500' }
+                        { label: 'Total Branches', value: '5+', color: 'text-orange-500' },
+                        { label: 'Expert Faculty', value: '10+', color: 'text-sky-500' },
+                        { label: 'Enrolled Students', value: '500+', color: 'text-lime-500' },
+                        { label: 'Success Stories', value: '1k+', color: 'text-orange-500' }
                     ].map((item, i) => (
                         <div key={i} className="text-center md:text-left">
                             <p className="text-xs uppercase tracking-widest text-slate-400 font-black mb-2">{item.label}</p>
@@ -140,15 +149,20 @@ const Branches = () => {
                         <h2 className="text-4xl font-black text-slate-900 mb-4 border-l-8 rounded border-sky-500 pl-6">Campus Network</h2>
                         <p className="text-slate-500 text-lg">Filter our specialized learning centers by campus category.</p>
                     </div>
-                    <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex flex-wrap justify-end gap-3">
-                        {categories.map((cat) => (
+                    <motion.div
+                        variants={fadeInUp}
+                        initial="hidden"
+                        animate="visible"
+                        className="flex overflow-x-auto scrollbar-hide gap-3 w-full md:w-auto pb-4 -mb-4 px-2"
+                    >
+                        {categories.map((cat, index) => (
                             <button
                                 key={cat}
                                 onClick={() => handleFilterChange(cat)}
-                                className={`px-8 py-3 rounded-2xl text-sm font-black transition-all border ${slugify(cat) === filter
+                                className={`px-8 py-3 rounded-2xl text-sm font-black transition-all border shrink-0 ${slugify(cat) === filter
                                     ? 'bg-slate-900 text-white border-slate-900 shadow-xl shadow-slate-900/30'
                                     : 'bg-white text-slate-400 border-slate-100 hover:border-orange-200 hover:text-orange-600'
-                                    }`}
+                                    } ${index === 0 ? 'sticky left-0 z-10' : ''}`}
                             >
                                 {cat}
                             </button>

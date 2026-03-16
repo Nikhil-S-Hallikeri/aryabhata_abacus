@@ -93,7 +93,7 @@ const BranchDetail = () => {
                                 {branch.type}
                             </span>
                         </div>
-                        <h1 className="text-5xl md:text-8xl font-black text-white mb-8 drop-shadow-2xl leading-tight">
+                        <h1 className="text-4xl md:text-8xl font-black text-white mb-8 drop-shadow-2xl leading-tight">
                             {branch.name}
                         </h1>
                         <div className="mb-10">

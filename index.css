@@ -2,6 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes border-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animated-border-card {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-border-card::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: conic-gradient(transparent, transparent, transparent, #f97316); /* orange-500 */
+  animation: border-rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.animated-border-card:hover::before {
+  opacity: 1;
+}
+
+/* This is the inner background to hide the center of the gradient */
+.animated-border-card::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 2px;
+  top: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background: inherit;
+  border-radius: inherit;
+}
+
 body {
   font-family: 'Inter', sans-serif;
 }

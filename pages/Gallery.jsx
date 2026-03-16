@@ -65,7 +65,7 @@ const Gallery = () => {
                         initial={{ scale: 1.1 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-                        src="https://picsum.photos/1600/900?random=25"
+                        src="gallery.avif"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />
@@ -76,33 +76,46 @@ const Gallery = () => {
                         animate="visible"
                         variants={staggerContainer}
                     >
-                        <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-6">Our Gallery</motion.h1>
+                        <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-6 ">Our <span className="text-orange-500">Gallery</span></motion.h1>
                         <motion.p variants={fadeInUp} className="text-slate-300 text-lg md:text-xl">Glimpses of life at the Academy</motion.p>
                     </motion.div>
                 </div>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                    className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                >
+                    <span className="text-xs uppercase tracking-widest text-slate-400">Scroll to Explore</span>
+                    <div className="w-1 h-12 rounded-full bg-gradient-to-b from-orange-400 to-transparent animate-pulse" />
+                </motion.div>
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                {/* Filters */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex flex-wrap justify-center gap-3 mb-12"
-                >
-                    {categories.map((cat) => (
-                        <button
-                            key={cat}
-                            onClick={() => setFilter(cat)}
-                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${filter === cat
-                                ? 'bg-orange-500 text-white shadow-lg'
-                                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                                }`}
+                <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8 text-left">
+                    <h2 className="text-3xl font-black text-slate-900 border-l-4 rounded border-orange-500 pl-4">Explore Our Moments</h2>
+                    <div className="flex-1 w-full md:w-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="flex overflow-x-auto scrollbar-hide gap-3 w-full pb-4 px-2"
                         >
-                            {cat}
-                        </button>
-                    ))}
-                </motion.div>
+                            {categories.map((cat, index) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setFilter(cat)}
+                                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all shrink-0 ${filter === cat
+                                        ? 'bg-orange-500 text-white shadow-lg'
+                                        : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                                        } ${index === 0 ? 'sticky left-0 z-10' : ''}`}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </motion.div>
+                    </div>
+                </div>
 
                 {loading ? (
                     <div className="flex justify-center">

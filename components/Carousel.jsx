@@ -98,7 +98,7 @@ const Carousel = ({ items, renderItem, className = "" }) => {
                 {extendedItems.map((item, index) => (
                     <motion.div
                         key={`${item.id}-${index}`}
-                        className="shrink-0 w-[280px] sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] h-full flex mt-2"
+                        className="shrink-0 w-[280px] sm:w-[calc(50%-12px)] md:w-[calc(33.3333%-16px)] lg:w-[calc(25%-18px)] flex mt-2"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}

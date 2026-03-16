@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Mail, MapPin, Phone } from 'lucide-react';
 import logo from '../assets/logo.png';
+import { SITE_CONFIG } from '../seo.config';
 
 const Footer = () => {
     return (
@@ -11,22 +12,33 @@ const Footer = () => {
 
                     {/* Brand & Bio */}
                     <div className="space-y-4">
-                        {/* <h3 className="text-2xl font-bold text-orange-500">AcademyPortal</h3> */}
-                        <img src={logo} alt="Logo" className="w-22 h-16" />
-                        <p className="text-slate-400 text-sm">
-                            Empowering minds through Abacus and fostering creativity through Fashion Design. Join us to unlock your potential.
+                        <img src={logo} alt={SITE_CONFIG.name} className="w-22 h-16" />
+                        <p className="text-slate-400 text-sm leading-relaxed">
+                            {SITE_CONFIG.description}
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Facebook size={20} /></a>
-                            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Instagram size={20} /></a>
-                            <a href="#" className="text-slate-400 hover:text-white transition-colors"><Twitter size={20} /></a>
+                            {SITE_CONFIG.social.facebook && (
+                                <a href={SITE_CONFIG.social.facebook} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-orange-500 transition-colors">
+                                    <Facebook size={22} />
+                                </a>
+                            )}
+                            {SITE_CONFIG.social.instagram && (
+                                <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-orange-500 transition-colors">
+                                    <Instagram size={22} />
+                                </a>
+                            )}
+                            {SITE_CONFIG.social.youtube && (
+                                <a href={SITE_CONFIG.social.youtube} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-orange-500 transition-colors">
+                                    <Youtube size={22} />
+                                </a>
+                            )}
                         </div>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul className="space-y-2 text-sm text-slate-400">
+                        <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+                        <ul className="space-y-2 text-sm text-slate-400 font-medium">
                             <li><Link to="/about" className="hover:text-orange-500 transition-colors">About Us</Link></li>
                             <li><Link to="/services" className="hover:text-orange-500 transition-colors">All Services</Link></li>
                             <li><Link to="/branches" className="hover:text-orange-500 transition-colors">Our Branches</Link></li>
@@ -37,37 +49,38 @@ const Footer = () => {
 
                     {/* Services */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-4">Our Programs</h4>
-                        <ul className="space-y-2 text-sm text-slate-400">
-                            <li><Link to="/services/abacus-mastery" className="hover:text-orange-500 transition-colors">Abacus Mastery</Link></li>
+                        <h4 className="text-lg font-semibold mb-4 text-white">Our Programs</h4>
+                        <ul className="space-y-2 text-sm text-slate-400 font-medium">
+                            <li><Link to="/services/abacus" className="hover:text-orange-500 transition-colors">Abacus Mastery</Link></li>
                             <li><Link to="/services/vedic-maths" className="hover:text-orange-500 transition-colors">Vedic Maths</Link></li>
-                            <li><Link to="/services/fashion-illustration" className="hover:text-orange-500 transition-colors">Fashion Illustration</Link></li>
-                            <li><Link to="/services/pattern-making" className="hover:text-orange-500 transition-colors">Pattern Making</Link></li>
+                            <li><Link to="/services/fashion-designing" className="hover:text-orange-500 transition-colors">Fashion Designing</Link></li>
+                            <li><Link to="/services/drawing-and-craft" className="hover:text-orange-500 transition-colors">Drawing & Craft</Link></li>
                         </ul>
                     </div>
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-                        <ul className="space-y-3 text-sm text-slate-400">
+                        <h4 className="text-lg font-semibold mb-4 text-white">Contact Us</h4>
+                        <ul className="space-y-4 text-sm text-slate-400 font-medium">
                             <li className="flex items-start gap-3">
                                 <MapPin size={18} className="text-orange-500 shrink-0 mt-0.5" />
-                                <span>123 Education Lane, City Center,<br />Main District, 54321</span>
+                                <span>{SITE_CONFIG.address.street},<br />{SITE_CONFIG.address.city}, {SITE_CONFIG.address.pincode}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone size={18} className="text-orange-500 shrink-0" />
-                                <span>+1 234 567 8900</span>
+                                <a href={`tel:${SITE_CONFIG.phone.split(',')[0]}`} className="hover:text-white transition-colors">{SITE_CONFIG.phone}</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail size={18} className="text-orange-500 shrink-0" />
-                                <span>info@academyportal.com</span>
+                                <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-white transition-colors">{SITE_CONFIG.email}</a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
-                    <p>&copy; {new Date().getFullYear()} Academy Portal. All rights reserved.</p>
+                <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center gap-4 text-sm text-slate-500 font-medium">
+                    <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
+                    {/* <p>Designed with ❤️ for Excellence</p> */}
                 </div>
             </div>
         </footer>

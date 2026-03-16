@@ -7,7 +7,7 @@ const BlogCard = ({ blog }) => {
     return (
         <motion.article
             whileHover={{ y: -8 }}
-            className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-200/40 h-full flex flex-col"
+            className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-200/40 h-full flex flex-col w-full"
         >
             {/* Image Section */}
             <div className="relative h-64 overflow-hidden">

@@ -7,7 +7,7 @@ const BranchCard = ({ branch, compact = false }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
-            className={`group relative bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-sky-200/40 h-full flex flex-col`}
+            className={`group relative bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 transition-all duration-500 hover:shadow-2xl hover:shadow-sky-200/40 h-full flex flex-col w-full`}
         >
             {/* Image Section */}
             <div className={`relative ${compact ? 'h-48' : 'h-64'} overflow-hidden`}>

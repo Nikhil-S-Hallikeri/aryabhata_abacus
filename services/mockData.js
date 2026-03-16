@@ -160,17 +160,22 @@ export const branchesData = [
         slug: 'haveri-main-branch',
         name: 'Haveri Main Branch',
         type: 'Main Campus',
-        description: 'Our central hub led by Founder Shilpa(Kavya) Kotresh Gadad, offering a comprehensive suite of cognitive and creative programs.',
+        description: 'Our central hub led by Founder Shilpa Kotresh Gadad, offering a comprehensive suite of cognitive and creative programs.',
         address: 'Aryabhata Abacus, Behind Geleyara Balaga Primary School, Opp. J H Patel Circle, Haveri - 581110',
         phone: '9986396375, 7996515656',
-        email: 'aryabhataabacus2019@gmail.com',
+        email: 'aryabhataabacus2019@gmail.com, shrisannidhi2011@gmail.com',
         imageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1200',
         serviceIds: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'],
         facilities: ['Modern Classrooms', 'Abacus Lab', 'Fashion Studio', 'Martial Arts Dojo'],
         hours: 'Tue-Sat: 3:30 PM - 7:00 PM, Sun: 8:00 AM - 11:30 AM',
         stats: { students: '1000+', faculty: '40+' },
-        founder: 'Shilpa(Kavya) Kotresh Gadad',
-        qualification: 'Dip.C.Sc, (PGDCA), MA, Eco. So.'
+        founder: 'Shilpa Kotresh Gadad',
+        qualification: 'Dip.C.Sc, (PGDCA), MA, Eco. So.',
+        social: {
+            instagram: 'https://www.instagram.com/aryabhataabacus_haveri/',
+            facebook: 'https://www.facebook.com/swarupa.cb?mibextid=ZbWKwL',
+            youtube: 'https://www.youtube.com/@aryabhataabacushaveri'
+        }
     },
     {
         id: 'b2',
@@ -214,7 +219,7 @@ In today's digital age, mental arithmetic skills provide a significant advantage
 
 At Aryabhata, we follow a systemic level-based approach to ensure that every child masters the foundations before moving to complex multi-digit operations. The journey from physical beads to mental visualization is a transformative cognitive experience.`,
         date: 'Oct 12, 2023',
-        author: 'Jayalakshmi',
+        author: 'Shilpa Kotresh Gadad',
         authorRole: 'Founder & Chief Educator',
         category: 'Education',
         readTime: '6 min read',
@@ -256,6 +261,24 @@ More than just shortcuts, Vedic math encourages an agile mind. It allows student
         readTime: '5 min read',
         tags: ['Vedic Math', 'Student Tips', 'Academic Excellence'],
         imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200'
+    },
+    {
+        id: 'bg4',
+        slug: 'karate-for-discipline',
+        title: 'Why Karate is the Ultimate Tool for Child Discipline',
+        excerpt: 'Mastering the art of Karate goes beyond self-defense; it builds mental resilience and unwavering focus.',
+        content: `Karate is much more than a set of physical techniques; it is a way of life that emphasizes discipline, respect, and self-control. For children, the structured environment of a dojo provides a unique space to learn the value of perseverance and the importance of setting and achieving goals.
+
+Every belt earned and every kata mastered is a testament to the power of consistent effort. Through karate, students learn to channel their energy into productive focus, which often translates into improved academic performance and better social behavior. It builds a foundation of respect—for oneself, for peers, and for mentors.
+
+At Aryabhata, our karate program is designed to nurture both the body and the mind. We focus on traditional techniques that instill a sense of heritage and pride, ensuring that children grow up to be confident, disciplined individuals who are ready to face any challenge with a calm and focused spirit.`,
+        date: 'Jan 20, 2024',
+        author: 'Master Vikram Singh',
+        authorRole: 'Chief Martial Arts Instructor',
+        category: 'Self-Defense',
+        readTime: '7 min read',
+        tags: ['Martial Arts', 'Discipline', 'Child Development'],
+        imageUrl: 'https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=1200'
     }
 ];
 

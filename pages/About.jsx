@@ -1,7 +1,8 @@
 import React from 'react';
-import { Award, Users, Target, Sparkles, GraduationCap, Quote, CheckCircle2, Heart, Feather, History } from 'lucide-react';
+import { Award, Users, Target, Sparkles, GraduationCap, Quote, CheckCircle2, Heart, Feather, History, Instagram, Facebook } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/SEOHead';
+import { SITE_CONFIG } from '../seo.config';
 import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 
 const About = () => {
@@ -42,7 +43,7 @@ const About = () => {
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-                        src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1600"
+                        src="/about-us.png"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />
@@ -62,7 +63,7 @@ const About = () => {
                         </motion.span>
                         <motion.h1
                             variants={fadeInUp}
-                            className="text-5xl md:text-8xl font-black mb-8 leading-tight drop-shadow-2xl"
+                            className="text-4xl md:text-7xl font-black mb-8 leading-tight drop-shadow-2xl"
                         >
                             Empowering <span className="text-orange-500">Minds</span>,<br />
                             Nurturing <span className="text-sky-400">Creativity</span>
@@ -125,7 +126,7 @@ const About = () => {
                             </h3>
                             <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
                                 <p>
-                                    Founded with a vision by Jayalakshmi, the academy serves as a unique bridge between two seemingly different worlds: the precise, analytical world of <strong>Mental Arithmetic</strong> and the fluid, expressive world of <strong>Fashion Design</strong>.
+                                    Founded with a vision by Shilpa Kotresh Gadad, the academy serves as a unique bridge between two seemingly different worlds: the precise, analytical world of <strong>Mental Arithmetic</strong> and the fluid, expressive world of <strong>Fashion Design</strong>.
                                 </p>
                                 <p className="bg-slate-50 p-6 rounded-2xl border-l-4 border-orange-500 italic">
                                     "We believe that a well-rounded mind is one that can calculate like a machine and create like a poet. This duality is the secret to true intellectual freedom."
@@ -143,20 +144,20 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                             className="relative"
                         >
-                            <div className="relative z-10 grid grid-cols-2 gap-6 items-end">
-                                <div className="space-y-6">
-                                    <div className="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                                        <img src="https://images.unsplash.com/photo-1596495573105-31bc9d4979d8?auto=format&fit=crop&q=80&w=400&h=500" alt="Learning" className="w-full object-cover" />
+                            <div className="relative z-10 grid grid-cols-2 gap-6 items-stretch">
+                                <div className="space-y-6 flex flex-col">
+                                    <div className="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 aspect-[4/5] shrink-0">
+                                        <img src="/iso-cert.jpeg" alt="Learning" className="w-full h-full object-cover" />
                                     </div>
-                                    <div className="bg-orange-500 p-8 rounded-3xl text-white shadow-xl">
+                                    <div className="bg-orange-500 p-8 rounded-3xl text-white shadow-xl flex-grow flex flex-col justify-center">
                                         <GraduationCap size={40} className="mb-4" />
-                                        <p className="text-2xl font-bold">1500+</p>
+                                        <p className="text-2xl font-bold">200+</p>
                                         <p className="text-sm opacity-80 uppercase tracking-wider">Certified Students</p>
                                     </div>
                                 </div>
-                                <div className="space-y-6">
-                                    <div className="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                                        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=400&h=600" alt="Fashion" className="w-full object-cover" />
+                                <div className="flex flex-col">
+                                    <div className="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 h-full aspect-[4/5]">
+                                        <img src="/aryabhataa.png" alt="Certification" className="w-full h-full object-cover" />
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +168,7 @@ const About = () => {
                 </section>
 
                 {/* Section 3: The Growth Timeline */}
-                <section className="py-20 bg-slate-50/50 rounded-[3rem] border border-white/50">
+                <section className="py-10 bg-slate-50/50 rounded-[3rem] border border-white/50">
                     <div className="text-center mb-16">
                         <h2 className="text-sm uppercase tracking-widest text-orange-500 font-bold mb-4 flex items-center justify-center gap-2">
                             <History size={16} /> Our Milestones
@@ -211,51 +212,123 @@ const About = () => {
                     </div>
                 </section>
 
-                {/* Section 4: The Visionary (Founder Profile) */}
+                {/* Section 4: The Visionary (Founder Profile - Premium Redesign) */}
                 <motion.section
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="relative py-20"
+                    className="relative py-10 group"
                 >
-                    <div className="absolute top-1/2 left-0 w-full h-px bg-slate-100 -z-10" />
-                    <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-50">
-                        <div className="grid grid-cols-1 lg:grid-cols-12">
-                            <div className="lg:col-span-5 h-[500px] lg:h-auto">
-                                <img
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-                                    alt="Founder"
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div className="lg:col-span-7 p-10 md:p-16 flex flex-col justify-center relative">
-                                <Quote className="absolute top-10 right-10 text-orange-500/10" size={120} />
-                                <div className="relative z-10">
-                                    <h4 className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4">Founder's Message</h4>
-                                    <h2 className="text-5xl font-black text-slate-900 mb-2">Jayalakshmi</h2>
-                                    <p className="text-xl text-slate-500 font-medium mb-8">MSc Mathematics | Education Visionary</p>
+                    {/* Artistic Background Accents */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[120px] -z-10 animate-pulse" />
+                    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sky-500/5 rounded-full blur-[100px] -z-10" />
 
-                                    <div className="space-y-6 text-xl text-slate-700 leading-relaxed italic border-l-4 border-slate-900 pl-8 mb-10">
-                                        <p>
-                                            "My vision is to create a generation that fears no number and hesitates at no canvas. True education should be the wind beneath a student's wings, allowing them to soar in both logic and art."
-                                        </p>
+                    <div className="max-w-6xl mx-auto px-4">
+                        <div className="relative bg-white/40 backdrop-blur-xl rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-white/50 overflow-hidden">
+                            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+
+                                {/* Founder Image with Elegant Framing */}
+                                <div className="lg:col-span-5 relative overflow-hidden group/image min-h-[500px]">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent z-10" />
+                                    <img
+                                        src="shilpa.jpeg"
+                                        alt="Founder Shilpa Kotresh Gadad"
+                                        className="w-full h-full object-cover transform transition-transform duration-1000 group-hover/image:scale-110"
+                                    />
+
+                                    {/* Glassmorphism Badge Overlays */}
+                                    <div className="absolute bottom-12 left-10 z-20 space-y-4">
+                                        <motion.div
+                                            initial={{ x: -30, opacity: 0 }}
+                                            whileInView={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: 0.4 }}
+                                            className="backdrop-blur-xl bg-white/10 border border-white/20 px-6 py-3 rounded-2xl text-white shadow-2xl flex items-center gap-3"
+                                        >
+                                            <div className="bg-orange-500 p-2 rounded-lg">
+                                                <Award size={18} />
+                                            </div>
+                                            <div>
+                                                <p className="text-xs uppercase tracking-widest opacity-70 font-bold">Experience</p>
+                                                <p className="text-lg font-bold">15+ Successful Years</p>
+                                            </div>
+                                        </motion.div>
+                                        <motion.div
+                                            initial={{ x: -30, opacity: 0 }}
+                                            whileInView={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: 0.6 }}
+                                            className="backdrop-blur-xl bg-white/10 border border-white/20 px-6 py-3 rounded-2xl text-white shadow-2xl flex items-center gap-3"
+                                        >
+                                            <div className="bg-sky-500 p-2 rounded-lg">
+                                                <CheckCircle2 size={18} />
+                                            </div>
+                                            <div>
+                                                <p className="text-xs uppercase tracking-widest opacity-70 font-bold">Status</p>
+                                                <p className="text-lg font-bold">Master Certified Mentor</p>
+                                            </div>
+                                        </motion.div>
                                     </div>
+                                </div>
 
-                                    <div className="flex flex-wrap gap-4">
-                                        <div className="flex items-center gap-2 bg-slate-50 px-5 py-3 rounded-2xl">
-                                            <Award className="text-orange-500" size={20} />
-                                            <span className="font-bold text-slate-800">15+ Yrs Exp</span>
-                                        </div>
-                                        <div className="flex items-center gap-2 bg-slate-50 px-5 py-3 rounded-2xl">
-                                            <CheckCircle2 className="text-sky-500" size={20} />
-                                            <span className="font-bold text-slate-800">Certified Master</span>
-                                        </div>
-                                    </div>
+                                {/* Content Section with Advanced Layout */}
+                                <div className="lg:col-span-7 p-10 md:p-12 flex flex-col justify-center relative bg-gradient-to-br from-white/80 to-slate-50/50">
+                                    <Quote className="absolute top-6 right-8 text-orange-500/5 rotate-12" size={140} />
 
-                                    <div className="mt-12 opacity-50">
-                                        <p className="font-serif text-3xl text-slate-900">Jayalakshmi</p>
-                                        <p className="text-xs uppercase tracking-tighter text-slate-500 mt-1">Founding Director</p>
+                                    <div className="relative z-10">
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            className="flex items-center gap-3 mb-6"
+                                        >
+                                            <span className="w-10 h-[2px] bg-orange-500" />
+                                            <span className="text-orange-600 font-black uppercase text-[10px] tracking-[0.3em]">The Visionary Leadership</span>
+                                        </motion.div>
+
+                                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight leading-none">
+                                            Shilpa <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500">Kotresh Gadad</span>
+                                        </h2>
+
+                                        <div className="flex flex-wrap items-center gap-3 text-slate-500 mb-8">
+                                            <p className="text-lg font-medium tracking-tight">Dip.C.Sc, (PGDCA), MA, Eco. So.</p>
+                                            <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-slate-200" />
+                                            <p className="text-lg font-bold text-slate-800">Founding Director</p>
+                                        </div>
+
+                                        <div className="relative mb-10 p-6 bg-white/50 rounded-2xl border border-slate-100 shadow-sm">
+                                            <Quote className="text-orange-500/10 absolute -top-3 -left-3" size={40} />
+                                            <p className="text-lg md:text-xl text-slate-700 font-medium leading-relaxed italic">
+                                                "My vision is to create a generation that fears no number and hesitates at no canvas. True education should be the wind beneath a student's wings."
+                                            </p>
+                                        </div>
+
+                                        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-6 border-t border-slate-200/60">
+                                            <div className="space-y-1">
+                                                <p className="font-serif text-3xl text-slate-900 tracking-tighter">Shilpa Kotresh Gadad</p>
+                                                <p className="text-[9px] uppercase tracking-[0.3em] font-black text-slate-400">Pioneering the Synergy of Art & Logic</p>
+                                            </div>
+
+                                            <div className="flex items-center gap-4">
+                                                {SITE_CONFIG.social.instagram && (
+                                                    <a
+                                                        href={SITE_CONFIG.social.instagram}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="w-14 h-14 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-400 hover:text-orange-500 hover:-translate-y-1 transition-all duration-300 border border-slate-50"
+                                                    >
+                                                        <Instagram size={24} />
+                                                    </a>
+                                                )}
+                                                {SITE_CONFIG.social.facebook && (
+                                                    <a
+                                                        href={SITE_CONFIG.social.facebook}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="w-14 h-14 rounded-2xl bg-white shadow-xl shadow-slate-200/50 flex items-center justify-center text-slate-400 hover:text-orange-500 hover:-translate-y-1 transition-all duration-300 border border-slate-50"
+                                                    >
+                                                        <Facebook size={24} />
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -263,32 +336,80 @@ const About = () => {
                     </div>
                 </motion.section>
 
-                {/* Section 4: Our Mission Pillars */}
+                {/* Section 5: Our Mission Pillars (Premium Modern-Traditional Redesign) */}
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     variants={staggerContainer}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-10"
+                    className="py-0 relative"
                 >
-                    {[
-                        { icon: Target, color: "orange", title: "Global Mission", text: "To provide accessible, world-class skill development programs that empower individuals to excel in a competitive world." },
-                        { icon: Heart, color: "sky", title: "Empathetic Learning", text: "We treat every student's growth personally, nurturing their confidence as much as their technical skills." },
-                        { icon: Sparkles, color: "slate-900", title: "Unmatched Quality", text: "Committed to maintaining the highest benchmarks in teaching methodology and experimental student outcomes." }
-                    ].map((item, index) => (
-                        <motion.div
-                            key={index}
-                            variants={fadeInUp}
-                            whileHover={{ y: -10 }}
-                            className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-orange-500/10 transition-all duration-500 text-center"
-                        >
-                            <div className={`inline-flex items-center justify-center p-5 bg-${item.color === 'slate-900' ? 'slate-900' : item.color + '-500'} text-white rounded-[1.5rem] mb-8 shadow-lg group-hover:rotate-12 transition-transform`}>
-                                <item.icon size={32} />
-                            </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                            <p className="text-slate-600 leading-relaxed text-lg">{item.text}</p>
+                    {/* Cultural Decorative Header */}
+                    <div className="text-center mb-16 relative">
+                        <motion.div variants={fadeInUp} className="inline-block mb-4">
+                            <span className="text-orange-600 font-black uppercase text-xs tracking-[0.4em] bg-orange-50 px-6 py-2 rounded-full border border-orange-100/50">
+                                Guided by Purpose
+                            </span>
                         </motion.div>
-                    ))}
+                        <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+                            Our Mission <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 font-serif italic">Pillars</span>
+                        </motion.h2>
+                        <motion.div variants={fadeInUp} className="flex justify-center items-center gap-4">
+                            <div className="h-px w-12 bg-slate-200" />
+                            <Sparkles className="text-amber-400" size={20} />
+                            <div className="h-px w-12 bg-slate-200" />
+                        </motion.div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                        {[
+                            {
+                                icon: Target,
+                                title: "Global Mission",
+                                color: "from-orange-500 to-amber-600",
+                                text: "To provide accessible, world-class skill development programs that empower individuals to excel in a competitive world."
+                            },
+                            {
+                                icon: Heart,
+                                title: "Empathetic Learning",
+                                color: "from-sky-500 to-indigo-600",
+                                text: "We treat every student's growth personally, nurturing their confidence as much as their technical skills."
+                            },
+                            {
+                                icon: Sparkles,
+                                title: "Unmatched Quality",
+                                color: "from-slate-800 to-slate-950",
+                                text: "Committed to maintaining the highest benchmarks in teaching methodology and experimental student outcomes."
+                            }
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeInUp}
+                                whileHover={{ y: -10 }}
+                                className="group relative"
+                            >
+                                {/* Decorative Card Frame */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-white rounded-[2.5rem] -rotate-1 group-hover:rotate-0 transition-transform duration-500 border border-slate-200/50 -z-10" />
+
+                                <div className="p-10 rounded-[2.5rem] bg-white shadow-2xl shadow-slate-200/40 border border-slate-100 h-full flex flex-col items-center text-center relative overflow-hidden">
+                                    {/* Subtle Cultural Pattern Overlay */}
+                                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+
+                                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white mb-8 shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                                        <item.icon size={36} strokeWidth={1.5} />
+                                    </div>
+
+                                    <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{item.title}</h3>
+                                    <p className="text-slate-600 leading-relaxed text-lg font-medium italic">"{item.text}"</p>
+
+                                    {/* Bottom Accent */}
+                                    <div className="mt-auto pt-8">
+                                        <div className="w-12 h-1 bg-slate-100 rounded-full mx-auto group-hover:w-24 group-hover:bg-orange-500/30 transition-all duration-500" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </motion.section>
             </div>
         </div>

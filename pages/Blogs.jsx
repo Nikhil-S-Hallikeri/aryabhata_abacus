@@ -10,10 +10,12 @@ import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [filteredBlogs, setFilteredBlogs] = useState([]);
+    // const [loading, setLoading] = useState(true);
+    // const [filteredBlogs, setFilteredBlogs] = useState([]);
     const [filter, setFilter] = useState('All');
     const [loading, setLoading] = useState(true);
 
-    const categories = ['All', 'Education', 'Fashion', 'Career'];
+    const categories = ['All', 'Education', 'Fashion', 'Self-Defense', 'Career'];
 
     useEffect(() => {
         const fetchData = async () => {
@@ -73,7 +75,7 @@ const Blogs = () => {
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
-                        src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1600"
+                        src="Blogs.png"
                         alt="Knowledge Hub"
                         className="w-full h-full object-cover"
                     />
@@ -154,7 +156,7 @@ const Blogs = () => {
                         <h2 className="text-4xl font-black text-slate-900 mb-4">Latest Publications</h2>
                         <p className="text-slate-500 text-lg">Deep dives into education, design, and personal growth from our expert faculty.</p>
                     </div>
-                    <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex flex-wrap gap-3">
+                    {/* <motion.div variants={fadeInUp} initial="hidden" animate="visible" className="flex flex-wrap gap-3">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
@@ -167,7 +169,7 @@ const Blogs = () => {
                                 {cat}
                             </button>
                         ))}
-                    </motion.div>
+                    </motion.div> */}
                 </div>
 
                 {loading ? (
