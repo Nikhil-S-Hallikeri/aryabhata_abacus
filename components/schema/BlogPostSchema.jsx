@@ -33,7 +33,7 @@ export const buildBlogPostSchema = (blog) => {
             "name": SITE_CONFIG.name,
             "logo": {
                 "@type": "ImageObject",
-                "url": `${SITE_CONFIG.siteUrl}/logo.png`,
+                "url": `${SITE_CONFIG.siteUrl}/logo.avif`,
             },
         },
         "mainEntityOfPage": {

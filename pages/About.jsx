@@ -43,7 +43,7 @@ const About = () => {
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-                        src="/about-us.png"
+                        src="/about-us.avif"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />
@@ -147,7 +147,7 @@ const About = () => {
                             <div className="relative z-10 grid grid-cols-2 gap-6 items-stretch">
                                 <div className="space-y-6 flex flex-col">
                                     <div className="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 aspect-[4/5] shrink-0">
-                                        <img src="/iso-cert.jpeg" alt="Learning" className="w-full h-full object-cover" />
+                                        <img src="/iso-cert.avif" alt="Learning" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="bg-orange-500 p-8 rounded-3xl text-white shadow-xl flex-grow flex flex-col justify-center">
                                         <GraduationCap size={40} className="mb-4" />
@@ -157,7 +157,7 @@ const About = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 h-full aspect-[4/5]">
-                                        <img src="/aryabhataa.png" alt="Certification" className="w-full h-full object-cover" />
+                                        <img src="/aryabhataa.avif" alt="Certification" className="w-full h-full object-cover" />
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@ const About = () => {
                                 <div className="lg:col-span-5 relative overflow-hidden group/image min-h-[500px]">
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent z-10" />
                                     <img
-                                        src="shilpa.jpeg"
+                                        src="shilpa.avif"
                                         alt="Founder Shilpa Kotresh Gadad"
                                         className="w-full h-full object-cover transform transition-transform duration-1000 group-hover/image:scale-110"
                                     />

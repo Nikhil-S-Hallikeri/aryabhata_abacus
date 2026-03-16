@@ -1,5 +1,6 @@
 import { servicesData, branchesData, blogsData, galleryData, videosData, testimonialsData, specialClassesData } from './mockData';
 import { supabase } from './supabase';
+import { getDynamicGalleryItems } from './galleryLoader';
 
 // Utility to map snake_case to camelCase for frontend components
 const mapFromSupabase = (data) => {
@@ -75,7 +76,7 @@ export const getBlogBySlug = async (slug) => {
 };
 
 export const getGalleryItems = async () => {
-    return galleryData; // Static
+    return getDynamicGalleryItems();
 };
 
 export const getVideos = async () => {

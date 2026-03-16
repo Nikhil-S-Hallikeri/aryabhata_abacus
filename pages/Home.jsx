@@ -15,21 +15,21 @@ import { SITE_CONFIG } from '../seo.config';
 const slides = [
     {
         id: 1,
-        image: "/creative.png",
+        image: "/creative.avif",
         title: "Unlock Creativity & Master Mathematics",
         subtitle: "Empowering the next generation with advanced Abacus skills and professional Fashion Design training under one roof.",
         cta: "Explore Courses"
     },
     {
         id: 2,
-        image: "/abacus.png",
+        image: "/abacus.avif",
         title: "Master Mental Arithmetic",
         subtitle: "Boost brainpower, concentration, and confidence with our world-class Abacus programs.",
         cta: "Discover Abacus"
     },
     {
         id: 3,
-        image: "/fashion.png",
+        image: "/fashion.avif",
         title: "Design Your Future",
         subtitle: "Unleash your inner designer with our comprehensive Fashion Design and tailoring courses.",
         cta: "View Fashion Courses"
@@ -135,7 +135,7 @@ const Home = () => {
                         initial={{ opacity: 0, scale: 1.1 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 4, ease: "easeInOut" }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
                     >
                         <div className="absolute inset-0 bg-black/50 z-10" />
                         <img
@@ -153,14 +153,14 @@ const Home = () => {
                             key={currentSlide}
                             initial="hidden"
                             animate="visible"
-                            exit={{ opacity: 0, y: 20, transition: { duration: 0.3 } }}
+                            exit={{ opacity: 0, y: 20, transition: { duration: 1 } }}
                             variants={staggerContainer}
                             className="max-w-3xl"
                         >
                             <motion.h1
                                 variants={{
                                     hidden: { opacity: 0, y: 30 },
-                                    visible: { opacity: 1, y: 0, transition: { duration: 4, ease: "easeOut" } }
+                                    visible: { opacity: 1, y: 0, transition: { duration: 3, ease: "easeOut" } }
                                 }}
                                 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 drop-shadow-lg"
                             >
@@ -175,7 +175,7 @@ const Home = () => {
                             <motion.p
                                 variants={{
                                     hidden: { opacity: 0, y: 30 },
-                                    visible: { opacity: 1, y: 0, transition: { duration: 4, ease: "easeOut" } }
+                                    visible: { opacity: 1, y: 0, transition: { duration: 3, ease: "easeOut" } }
                                 }}
                                 className="text-lg md:text-xl text-slate-200 mb-8 max-w-2xl mx-auto drop-shadow-md"
                             >
@@ -568,7 +568,7 @@ const Home = () => {
                         className="text-center mb-16"
                     >
                         <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-                            Special <span className="text-orange-500">Classes</span> & Programs
+                            Available <span className="text-orange-500">Classes</span> & Programs
                         </h2>
                         <p className="text-slate-400 max-w-2xl mx-auto text-lg">
                             Don't miss out on our limited-time seasonal workshops and enrichment camps.
@@ -741,6 +741,7 @@ const Home = () => {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">What People Say</h2>
+                        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-2 mt-2" />
                         <p className="text-slate-600 max-w-2xl mx-auto">
                             Hear from our students and parents about their experience with us.
                         </p>
@@ -752,11 +753,11 @@ const Home = () => {
                             <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative h-full w-full">
                                 <Quote className="absolute top-6 right-6 text-orange-200" size={48} />
                                 <div className="flex items-center gap-4 mb-6">
-                                    <img
+                                    {/* <img
                                         src={testimonial.avatar}
                                         alt={testimonial.name}
                                         className="w-14 h-14 rounded-full object-cover border-2 border-orange-100"
-                                    />
+                                    /> */}
                                     <div>
                                         <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
                                         <p className="text-sm text-slate-500">{testimonial.role}</p>

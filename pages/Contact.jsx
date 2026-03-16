@@ -76,7 +76,7 @@ const Contact = () => {
                         initial={{ scale: 1.1 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-                        src="contact.jpg"
+                        src="contact.avif"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />

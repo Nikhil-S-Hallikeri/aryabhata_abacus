@@ -13,7 +13,7 @@ import { SITE_CONFIG } from '../seo.config';
  *     title="Abacus Classes in Haveri | Aryabhata"
  *     description="Join the best abacus training in Haveri..."
  *     canonical="/branches/haveri"
- *     image="/og-image.png"
+ *     image="/og-image.avif"
  *     type="website"        ← optional
  *     noIndex={false}       ← optional, set true for admin pages
  *   />

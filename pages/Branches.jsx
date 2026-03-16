@@ -83,7 +83,7 @@ const Branches = () => {
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
-                        src="branches.jpg"
+                        src="branches.avif"
                         alt="Academy Branches"
                         className="w-full h-full object-cover"
                     />

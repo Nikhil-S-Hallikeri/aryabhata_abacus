@@ -52,7 +52,7 @@ export const SITE_CONFIG = {
 
     // ── Site URLs ──────────────────────────────────────────────
     siteUrl: "https://aryabhata-abacus.vercel.app",
-    ogImage: "https://aryabhata-abacus.vercel.app/og-image.png",
+    ogImage: "https://aryabhata-abacus.vercel.app/og-image.avif",
 
     // ── Social / Maps ──────────────────────────────────────────
     googleMapsUrl: "https://maps.google.com/?q=Aryabhata+Abacus+Haveri+Karnataka",

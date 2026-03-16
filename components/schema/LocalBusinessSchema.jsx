@@ -22,7 +22,7 @@ export const buildLocalBusinessSchema = (branch = null) => ({
         : SITE_CONFIG.name,
     "alternateName": SITE_CONFIG.shortName,
     "url": SITE_CONFIG.siteUrl,
-    "logo": `${SITE_CONFIG.siteUrl}/logo.png`,
+    "logo": `${SITE_CONFIG.siteUrl}/logo.avif`,
     "image": branch?.imageUrl || SITE_CONFIG.ogImage,
     "description": branch?.description || SITE_CONFIG.description,
     "foundingDate": SITE_CONFIG.foundedYear,

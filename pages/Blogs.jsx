@@ -70,12 +70,12 @@ const Blogs = () => {
             {/* Full-screen Knowledge Hero */}
             <div className="relative min-h-screen bg-slate-900 text-white flex flex-col justify-center items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900 z-10" />
                     <motion.img
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
-                        src="Blogs.png"
+                        src="Blogs.avif"
                         alt="Knowledge Hub"
                         className="w-full h-full object-cover"
                     />
@@ -94,13 +94,13 @@ const Blogs = () => {
                         </motion.span>
                         <motion.h1
                             variants={fadeInUp}
-                            className="text-5xl md:text-8xl font-black mb-6 leading-tight"
+                            className="text-5xl md:text-7xl font-black mb-6 leading-tight"
                         >
-                            The <span className="text-sky-500">Knowledge</span> Hub
+                            The <span className="text-orange-500">Knowledge</span> Hub
                         </motion.h1>
                         <motion.p
                             variants={fadeInUp}
-                            className="text-slate-300 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed"
+                            className="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed"
                         >
                             Explore articles, news, and expert tips from our educators to stay ahead in your learning journey.
                         </motion.p>

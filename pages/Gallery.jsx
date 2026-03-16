@@ -3,12 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getGalleryItems } from '../services/api';
 import SEOHead from '../components/SEOHead';
 import { buildBreadcrumbSchema } from '../components/schema/BreadcrumbSchema';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Gallery = () => {
     const [items, setItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
     const [filter, setFilter] = useState('All');
     const [loading, setLoading] = useState(true);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +30,27 @@ const Gallery = () => {
         }
     }, [filter, items]);
 
-    const categories = ['All', 'Abacus', 'Fashion Design', 'Events', 'Campus'];
+    const categories = ['All', ...new Set(items.map(item => item.category))];
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') setSelectedImage(null);
+            if (e.key === 'ArrowRight' && selectedImage) {
+                const currentIndex = filteredItems.findIndex(img => img.id === selectedImage.id);
+                if (currentIndex < filteredItems.length - 1) {
+                    setSelectedImage(filteredItems[currentIndex + 1]);
+                }
+            }
+            if (e.key === 'ArrowLeft' && selectedImage) {
+                const currentIndex = filteredItems.findIndex(img => img.id === selectedImage.id);
+                if (currentIndex > 0) {
+                    setSelectedImage(filteredItems[currentIndex - 1]);
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedImage, filteredItems]);
 
     // Animation Variants
     const fadeInUp = {
@@ -65,7 +87,7 @@ const Gallery = () => {
                         initial={{ scale: 1.1 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-                        src="gallery.avif"
+                        src="/gallery.avif"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />
@@ -140,17 +162,89 @@ const Gallery = () => {
                                     <img
                                         src={item.imageUrl}
                                         alt={item.caption}
+                                        onClick={() => setSelectedImage(item)}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                         <p className="text-white font-medium">{item.caption}</p>
-                                    </div>
+                                    </div> */}
                                 </motion.div>
                             ))}
                         </AnimatePresence>
                     </motion.div>
                 )}
             </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-8"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <motion.button
+                            className="absolute top-6 right-6 text-white/70 hover:text-white z-[110]"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            <X size={40} />
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="relative max-w-7xl max-h-screen flex flex-col items-center justify-center"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img
+                                src={selectedImage.imageUrl}
+                                alt={selectedImage.caption}
+                                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                            />
+                            {/* {selectedImage.caption && (
+                                <motion.p 
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="text-white mt-6 text-xl font-medium"
+                                >
+                                    {selectedImage.caption}
+                                </motion.p>
+                            )} */}
+                            
+                            <p className="text-orange-500 mt-2 text-sm uppercase tracking-widest px-4 py-1 bg-orange-500/10 rounded-full border border-orange-500/20">
+                                {selectedImage.category}
+                            </p>
+                        </motion.div>
+
+                        {/* Navigation Arrows */}
+                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-10 pointer-events-none">
+                            <button
+                                className={`p-3 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-all pointer-events-auto ${filteredItems.findIndex(i => i.id === selectedImage.id) === 0 ? 'invisible' : ''}`}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    const idx = filteredItems.findIndex(i => i.id === selectedImage.id);
+                                    setSelectedImage(filteredItems[idx - 1]);
+                                }}
+                            >
+                                <ChevronLeft size={32} />
+                            </button>
+                            <button
+                                className={`p-3 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-all pointer-events-auto ${filteredItems.findIndex(i => i.id === selectedImage.id) === filteredItems.length - 1 ? 'invisible' : ''}`}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    const idx = filteredItems.findIndex(i => i.id === selectedImage.id);
+                                    setSelectedImage(filteredItems[idx + 1]);
+                                }}
+                            >
+                                <ChevronRight size={32} />
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

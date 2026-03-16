@@ -297,8 +297,8 @@ export const videosData = [
         id: 'v1',
         type: 'youtube',
         thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
-        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
-        title: 'Abacus Competition Highlights 2023'
+        videoUrl: 'https://youtu.be/NQpxOomkeOI?si=0FLXO0IlA_K251Qc',
+        title: 'Abacus Expert'
     },
     {
         id: 'v2',
