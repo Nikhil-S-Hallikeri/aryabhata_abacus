@@ -74,7 +74,7 @@ const Services = () => {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 min-h-screen">
+        <div className="pb-20 bg-slate-50 min-h-screen overflow-x-hidden">
             <SEOHead
                 title="Our Programs | Abacus, Vedic Maths & Fashion Design Courses"
                 description="Explore certified abacus, vedic mathematics, mental arithmetic, and fashion design courses at Aryabhata Academy, Haveri. Programs for all ages and skill levels."

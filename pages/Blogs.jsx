@@ -55,7 +55,7 @@ const Blogs = () => {
     const otherBlogs = filteredBlogs.filter(b => b.id !== featuredBlog?.id);
 
     return (
-        <div className="pb-20 bg-slate-50 min-h-screen">
+        <div className="pb-20 bg-slate-50 min-h-screen overflow-x-hidden">
             <SEOHead
                 title="Blog | Abacus Tips, Education & Learning Insights"
                 description="Read expert articles on abacus benefits, vedic maths techniques, mental arithmetic tips, and education insights from Aryabhata Academy, Haveri."

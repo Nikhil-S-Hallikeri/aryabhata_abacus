@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, GraduationCap } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.avif';
 
 const Navbar = () => {
@@ -99,26 +100,77 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 absolute w-full left-0">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-xl">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                onClick={() => setIsOpen(false)}
-                                className={`block px-3 py-2 rounded-md text-base font-medium ${location.pathname === link.path
-                                    ? 'bg-orange-50 text-orange-600'
-                                    : 'text-slate-600 hover:bg-slate-50 hover:text-orange-500'
-                                    }`}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+            {/* Professional Mobile Menu Overlay */}
+            <AnimatePresence>
+                {isOpen && (
+                    <div className="fixed inset-0 z-[100] md:hidden">
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+                            onClick={() => setIsOpen(false)}
+                        />
+
+                        {/* Slide-out Menu */}
+                        <motion.div
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="absolute right-0 top-0  w-[280px] bg-white shadow-2xl flex flex-col z-[110]"
+                        >
+                            <div className="p-6 flex items-center justify-between border-b border-slate-100 bg-white sticky top-0">
+                                <img src={logo} alt="Logo" className="h-10 w-auto" />
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="p-2 text-slate-400 hover:text-orange-500 transition-colors"
+                                >
+                                    <X size={28} />
+                                </button>
+                            </div>
+
+                            <div className="p-4 flex-grow overflow-y-auto bg-white">
+                                <div className="space-y-1">
+                                    {navLinks.map((link, index) => (
+                                        <motion.div
+                                            key={link.name}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.1 + index * 0.05 }}
+                                        >
+                                            <Link
+                                                to={link.path}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`block px-4 py-4 rounded-xl text-lg font-bold transition-all ${location.pathname === link.path
+                                                    ? 'bg-orange-50 text-orange-600'
+                                                    : 'text-slate-600 hover:bg-slate-50 hover:text-orange-500'
+                                                    }`}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="p-6 border-t border-slate-100 bg-slate-50 sticky bottom-0">
+                                <Link
+                                    to="/contact"
+                                    onClick={() => setIsOpen(false)}
+                                    className="w-full flex items-center justify-center gap-2 py-4 bg-orange-500 text-white rounded-2xl font-black shadow-lg shadow-orange-500/20"
+                                >
+                                    Enquire Now <GraduationCap size={20} />
+                                </Link>
+                                <p className="mt-4 text-center text-[10px] uppercase font-black tracking-widest text-slate-400">
+                                    Aryabhata Academy © 2026
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
-                </div>
-            )}
+                )}
+            </AnimatePresence>
         </nav>
     );
 };

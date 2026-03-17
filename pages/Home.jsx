@@ -108,7 +108,7 @@ const Home = () => {
     });
 
     return (
-        <div className=" pb-20 min-h-screen text-center">
+        <div className="pb-20 min-h-screen text-center overflow-x-hidden">
             {/* ── SEO: Meta Tags & Structured Data ── */}
             <SEOHead
                 title="Best Abacus Classes in Haveri | Vedic Maths & Abacus Training"
@@ -263,7 +263,7 @@ const Home = () => {
             </section>
 
             {/* Branches Overview */}
-            <section className="bg-slate-50 py-16">
+            <section className="bg-slate-50 py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial="hidden"

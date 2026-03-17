@@ -23,7 +23,7 @@ const About = () => {
     };
 
     return (
-        <div className="pb-20 min-h-screen">
+        <div className="pb-20 min-h-screen overflow-x-hidden">
             <SEOHead
                 title="About Us | 14 Years of Abacus Excellence in Haveri"
                 description="Learn about Aryabhata Abacus & Vedic Maths Academy — founded in 2010 by Jayalakshmi, serving 5000+ students across 8+ branches in Haveri, Karnataka."
@@ -109,7 +109,7 @@ const About = () => {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-32 space-y-40">
                 {/* Section 2: The Story of Synergy */}
-                <section className="relative">
+                <section className="relative overflow-hidden">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
@@ -217,7 +217,7 @@ const About = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="relative py-10 group"
+                    className="relative py-10 group overflow-hidden"
                 >
                     {/* Artistic Background Accents */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[120px] -z-10 animate-pulse" />
@@ -342,7 +342,7 @@ const About = () => {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                     variants={staggerContainer}
-                    className="py-0 relative"
+                    className="py-0 relative overflow-hidden"
                 >
                     {/* Cultural Decorative Header */}
                     <div className="text-center mb-16 relative">

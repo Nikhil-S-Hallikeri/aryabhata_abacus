@@ -63,7 +63,7 @@ const Branches = () => {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 min-h-screen">
+        <div className="pb-20 bg-slate-50 min-h-screen overflow-x-hidden">
             <SEOHead
                 title="Our Branches | Abacus Centers in Haveri, Ranebennur & Savanur"
                 description="Find Aryabhata Abacus centers near you. We have branches in Haveri, Ranebennur, Savanur, Byadgi, Shirhatti and across Haveri district, Karnataka."

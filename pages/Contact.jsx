@@ -57,7 +57,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="pb-20 min-h-screen text-center">
+        <div className="pb-20 min-h-screen text-center overflow-x-hidden">
             <SEOHead
                 title="Contact Us | Aryabhata Abacus Academy - Haveri"
                 description="Contact Aryabhata Abacus Academy in Haveri, Karnataka. Call, WhatsApp, or send a message for admissions, franchise inquiries, and course information."

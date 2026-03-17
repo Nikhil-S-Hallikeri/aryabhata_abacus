@@ -56,7 +56,7 @@ const BlogDetail = () => {
     };
 
     return (
-        <div className="pb-24 bg-white min-h-screen relative">
+        <div className="pb-24 bg-white min-h-screen relative overflow-x-hidden">
             <SEOHead
                 title={blog.title}
                 description={blog.excerpt || blog.description || `${blog.title} — Read the full article on Aryabhata Academy's blog.`}

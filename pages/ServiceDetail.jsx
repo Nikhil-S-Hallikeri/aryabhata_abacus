@@ -64,7 +64,7 @@ const ServiceDetail = () => {
     };
 
     return (
-        <div className="pb-20 min-h-screen">
+        <div className="pb-20 min-h-screen overflow-x-hidden">
             <SEOHead
                 title={`${service.title} | Abacus & Vedic Maths Course in Haveri`}
                 description={`${service.title} at Aryabhata Academy, Haveri. ${service.description?.substring(0, 120) || 'Certified course with expert faculty. Enroll today.'}`}

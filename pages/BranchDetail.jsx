@@ -54,7 +54,7 @@ const BranchDetail = () => {
     };
 
     return (
-        <div className="pb-20 min-h-screen bg-slate-50">
+        <div className="pb-20 min-h-screen bg-slate-50 overflow-x-hidden">
             <SEOHead
                 title={`${branch.name} | Abacus Center in ${branch.address?.split(',').pop()?.trim() || 'Haveri'}`}
                 description={`Aryabhata Abacus center in ${branch.name}: ${branch.description?.substring(0, 130) || 'Certified abacus and vedic maths training. Expert faculty, modern facilities.'}`}

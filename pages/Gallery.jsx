@@ -69,7 +69,7 @@ const Gallery = () => {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 min-h-screen text-center">
+        <div className="pb-20 bg-slate-50 min-h-screen text-center overflow-x-hidden">
             <SEOHead
                 title="Gallery | Student Life at Aryabhata Abacus Academy"
                 description="Photos and videos of abacus competitions, fashion shows, student achievements, and campus life at Aryabhata Abacus Academy, Haveri, Karnataka."

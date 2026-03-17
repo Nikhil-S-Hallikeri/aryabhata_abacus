@@ -9,7 +9,7 @@ const StickyContactButtons = () => {
                 href="https://wa.me/917013280528"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative group flex items-center justify-center p-2"
+                className="relative group flex items-center justify-center p-2 rounded-full overflow-hidden"
                 aria-label="Chat on WhatsApp"
             >
                 {/* Premium Multi-Layer Wave Effect */}
