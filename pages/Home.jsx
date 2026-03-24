@@ -87,7 +87,7 @@ const Home = () => {
     // Animation Variants
     const fadeInUp = {
         hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 4.0 } }
+        visible: { opacity: 1, y: 0, transition: { duration: 2.0 } }
     };
 
     const staggerContainer = {
@@ -230,9 +230,6 @@ const Home = () => {
                     <h2 className="text-3xl font-bold text-slate-900">Our Programs</h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-2 mt-2" />
                     <p className="text-slate-600 mt-2 mb-6">Choose from our specialized courses designed to enhance skills and boost creativity.</p>
-                    <Link to="/services" className="text-white bg-orange-500 px-6 py-2 rounded-full font-semibold hover:text-orange-700 inline-flex items-center gap-1 hover:scale-105 transition-all">
-                        View All Services <ArrowRight size={18} />
-                    </Link>
                 </motion.div>
 
                 {loading ? (
@@ -255,11 +252,12 @@ const Home = () => {
                     </motion.div>
                 )}
 
-                <div className="mt-8 text-center sm:hidden">
-                    <Link to="/services" className="text-orange-600 font-semibold hover:text-orange-700 inline-flex items-center gap-1">
+                <div className="mt-10 text-center">
+                    <Link to="/services" className="text-white bg-orange-500 px-6 py-2 rounded-full font-semibold hover:text-orange-700 inline-flex items-center gap-1 hover:scale-105 transition-all">
                         View All Services <ArrowRight size={18} />
                     </Link>
                 </div>
+
             </section>
 
             {/* Branches Overview */}
@@ -272,16 +270,14 @@ const Home = () => {
                         variants={fadeInUp}
                         className="text-center mb-10"
                     >
-                        <h2 className="text-3xl font-bold text-slate-900">Our Branches</h2>
+                        <h2 className="text-3xl font-bold text-slate-900">Aryabhata Abacus Associated Branches</h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-2 mt-2" />
                         <p className="text-slate-600 mt-2 mb-6">Find a center near you to start your journey with us.</p>
                         {/* Local SEO: city mention for Google indexing */}
                         <p className="text-sm text-slate-400 mt-1">
                             Serving students in {SITE_CONFIG.serviceAreas.join(', ')} and across Haveri district, Karnataka.
                         </p>
-                        <Link to="/branches" className="text-white bg-orange-500 px-6 py-2 rounded-full font-semibold hover:text-orange-700 hover:scale-105 transition-all inline-flex items-center gap-1 mt-5">
-                            View All Branches <ArrowRight size={18} />
-                        </Link>
+
                     </motion.div>
 
                     {loading ? (
@@ -304,10 +300,15 @@ const Home = () => {
                         </motion.div>
                     )}
                 </div>
+                <div className="mt-10 text-center">
+                    <Link to="/branches" className="text-white bg-orange-500 px-6 py-2 rounded-full font-semibold hover:text-orange-700 hover:scale-105 transition-all inline-flex items-center gap-1 mt-5">
+                        View All Branches <ArrowRight size={18} />
+                    </Link>
+                </div>
             </section>
 
             {/* Why Choose Us - Modern Traditional Redesign */}
-            <section className="bg-white py-24 relative overflow-hidden">
+            <section className="bg-white py-16 relative overflow-hidden">
                 {/* Traditional Decorative Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l5.89 19.11L55.11 25 35.89 30.89 30 50l-5.89-19.11L5 25l19.11-5.89z' fill='%23f59e0b' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }} />
 

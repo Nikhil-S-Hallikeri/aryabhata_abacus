@@ -144,9 +144,9 @@ const Branches = () => {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 {/* Modern Filter Section */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
                     <div className="max-w-xl text-left">
-                        <h2 className="text-4xl font-black text-slate-900 mb-4 border-l-8 rounded border-sky-500 pl-6">Campus Network</h2>
+                        <h2 className="text-3xl font-black text-slate-900 mb-4 border-l-8 rounded border-sky-500 pl-6">Aryabhata Abacus Associated Branches</h2>
                         <p className="text-slate-500 text-lg">Filter our specialized learning centers by campus category.</p>
                     </div>
                     <motion.div
