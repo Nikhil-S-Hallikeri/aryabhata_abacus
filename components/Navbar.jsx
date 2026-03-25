@@ -9,6 +9,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [showIsoModal, setShowIsoModal] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -50,7 +51,8 @@ const Navbar = () => {
     };
 
     return (
-        <nav
+        <>
+            <nav
             className={`fixed w-full top-0 z-50 transition-all duration-500 
             ${isVisible ? 'translate-y-0' : '-translate-y-full'}
             ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-6'}`}
@@ -58,17 +60,23 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                            {/* <div className="bg-orange-500 p-2 rounded-lg text-white">
-                                <GraduationCap size={24} />
-                                
-                            </div> */}
-                            {/* <span className={`text-xl font-bold transition-colors ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
-                                Academy<span className={isScrolled ? 'text-orange-500' : 'text-orange-400'}>Portal</span>
-                            </span> */}
-                            <img src={logo} alt="Logo" className="w-22 h-16" />
-
-                        </Link>
+                        <div className="flex items-center gap-4">
+                            <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                                <img src={logo} alt="Logo" className="w-22 h-16" />
+                            </Link>
+                            <div className="h-10 w-px bg-slate-500"></div>
+                            <div
+                                className="cursor-pointer transition-transform hover:scale-110"
+                                onClick={() => setShowIsoModal(true)}
+                                title="View ISO Certificate"
+                            >
+                                <img
+                                    src="/certificate-iso.png"
+                                    alt="ISO Certified"
+                                    className="h-16 w-auto object-contain"
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-8">
@@ -122,7 +130,19 @@ const Navbar = () => {
                             className="absolute right-0 top-0  w-[280px] bg-white shadow-2xl flex flex-col z-[110]"
                         >
                             <div className="p-6 flex items-center justify-between border-b border-slate-100 bg-white sticky top-0">
+                            <div className="flex items-center gap-4">
                                 <img src={logo} alt="Logo" className="h-10 w-auto" />
+                                <img
+                                    src="/certificate-iso.png"
+                                    alt="ISO Certified"
+                                    className="h-8 w-auto object-contain cursor-pointer"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setIsOpen(false);
+                                        setShowIsoModal(true);
+                                    }}
+                                />
+                            </div>
                                 <button
                                     onClick={() => setIsOpen(false)}
                                     className="p-2 text-slate-400 hover:text-orange-500 transition-colors"
@@ -171,8 +191,51 @@ const Navbar = () => {
                     </div>
                 )}
             </AnimatePresence>
+
         </nav>
-    );
+
+        {/* ISO Certificate Modal - Moved outside nav for better positioning */}
+        <AnimatePresence>
+            {showIsoModal && (
+                <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm cursor-pointer"
+                        onClick={() => setShowIsoModal(false)}
+                    />
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col z-[1000] cursor-default"
+                    >
+                        <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0">
+                            <h3 className="text-xl font-bold text-slate-800">ISO Certificate</h3>
+                            <button
+                                onClick={() => setShowIsoModal(false)}
+                                className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+                        <div className="flex-grow p-4 overflow-y-auto overflow-x-hidden bg-slate-50">
+                            <div className="flex justify-center">
+                                <img
+                                    src="/iso-cert.avif"
+                                    alt="ISO Certificate"
+                                    className="w-full h-auto shadow-lg rounded-lg"
+                                />
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
+    </>
+);
 };
 
 export default Navbar;
